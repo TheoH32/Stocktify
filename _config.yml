@@ -5,6 +5,7 @@ github_username: TheoH32
 github_repo: "Stocktify"
 baseurl: "/Stocktify"
 remote_theme: jekyll/minima
+repository: TheoH32/Stocktify
 minima:
   social_links:
     - { platform: github, user_url: "https://github.com/TheoH32"}
