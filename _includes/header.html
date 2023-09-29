@@ -1,9 +1,12 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Your Website</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- You can link to an external stylesheet or include CSS here -->
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <style>
         /* Or you can include CSS directly within the HTML file */
         body {
@@ -16,7 +19,16 @@
             color: #fff;
             padding: 10px 20px;
             display: flex;
-            justify-content: flex-end; /* Align items to the right */
+            align-items: center; /* Center vertically */
+            justify-content: space-between; /* Space elements apart */
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        .header-icon {
+            font-size: 24px;
+            margin-right: 10px;
         }
         nav ul {
             list-style-type: none;
@@ -35,6 +47,9 @@
 </head>
 <body>
     <header>
+        <div class="header-left">
+            <i class="fas fa-home header-icon"></i> <!-- Font Awesome icon -->
+        </div>
         <nav>
             <ul>
                 <li><a href="#">Stocks</a></li>
