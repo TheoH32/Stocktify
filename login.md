@@ -1,6 +1,6 @@
 ---
 title: Account Login
-layout: home
+layout: post
 ---
 
 <form action="javascript:login_user()">
@@ -19,7 +19,7 @@ layout: home
 
 <script>
     // URL for deployment
-    var url = "https://spring.nighthawkcodingsociety.com"
+    var url = "https://stocktifybackend.duckdns.org"
     // Comment out next line for local testing
     // url = "http://localhost:8085"
     // Authenticate endpoint
