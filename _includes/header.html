@@ -48,7 +48,7 @@
 <body>
     <header>
         <div class="header-left">
-            <img class="switch" src="images/StocktifySwitchDark.png" height="75">
+            <img id="switch" src="images/StocktifySwitchDark.png" onclick="switched()" height="75">
             <!-- <i class="fas fa-home header-icon"></i> -->
         </div>
         <nav>
@@ -66,3 +66,17 @@
     
 </body>
 </html>
+<script>
+    var ld = 0
+    function switched(){
+        var switchimage = document.getElementById("switch");
+        if(ld==0){
+            switchimage.src = "images/StocktifySwitchLight.png"
+            ld++
+        }
+        else{
+            switchimage.src = "images/StocktifySwitchDark.png"
+            ld--
+        }
+    }
+</script>
