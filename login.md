@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 title: Account Login
 layout: post
 ---
@@ -62,3 +63,10 @@ layout: post
 
 
 </script>
+=======
+layout: home
+search_exclude: true
+---
+
+about
+>>>>>>> 323e8db (login)
