@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- You can link to an external stylesheet or include CSS here -->
     <!-- Include Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> -->
     <style>
         /* Or you can include CSS directly within the HTML file */
         body {
@@ -15,12 +15,18 @@
             padding: 0;
         }
         header {
-            background-color: #333;
-            color: #fff;
             padding: 10px 20px;
             display: flex;
             align-items: center; /* Center vertically */
             justify-content: space-between; /* Space elements apart */
+        }
+        .headadark {
+            background-color: #333;
+            color: #fff;
+        }
+        .headalight {
+            background-color: #deffd9;
+            color: #000;
         }
         .header-left {
             display: flex;
@@ -41,23 +47,28 @@
         }
         nav a {
             text-decoration: none;
-            color: #fff;
+        }
+        .navdark{
+            color: #fff !important;
+        }
+        .navlight{
+            color: #333333 !important;
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="heada" class="headadark">
         <div class="header-left">
             <img id="switch" src="images/StocktifySwitchDark.png" onclick="switched()" height="75">
             <!-- <i class="fas fa-home header-icon"></i> -->
         </div>
         <nav>
             <ul>
-                <li><a href="/Stocktify/login">Log In</a></li>
-                <li><a href="/Stocktify/stocks">Stocks</a></li>
-                <li><a href="/Stocktify/my_playlist">My Playlist</a></li>
-                <li><a href="/Stocktify/about">Login</a></li>
-                <li><a href="#"></a></li>
+                <li><a id="login" class="navdark" href="/Stocktify/login">Log In</a></li>
+                <li><a id="stock" class="navdark" href="/Stocktify/stocks">Stocks</a></li>
+                <li><a id="play" class="navdark" href="/Stocktify/my_playlist">My Playlist</a></li>
+                <li><a id="about" class="navdark" href="/Stocktify/about">Login</a></li>
+                <li><a id="o" class="navdark" href="#"></a></li>
             </ul>
         </nav>
     </header>
@@ -72,10 +83,22 @@
         var switchimage = document.getElementById("switch");
         if(ld==0){
             switchimage.src = "images/StocktifySwitchLight.png"
+            document.getElementById('login').className = "navlight";
+            document.getElementById('stock').className = "navlight";
+            document.getElementById('play').className = "navlight";
+            document.getElementById('about').className = "navlight";
+            document.getElementById('o').className = "navlight";
+            document.getElementById('heada').className = "headalight";
             ld++
         }
         else{
             switchimage.src = "images/StocktifySwitchDark.png"
+            document.getElementById('login').className = "navdark";
+            document.getElementById('stock').className = "navdark";
+            document.getElementById('play').className = "navdark";
+            document.getElementById('about').className = "navdark";
+            document.getElementById('o').className = "navdark";
+            document.getElementById('heada').className = "headadark";
             ld--
         }
     }
