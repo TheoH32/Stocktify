@@ -2,21 +2,56 @@
 title: Account Login
 layout: post
 ---
-
+<style>
+    .normal{
+        background-color: #121212 !important;
+        color: white !important:
+    }
+    .lightmode {
+        background-color: #F6FFF5 !important;
+        color: black !important;
+    }
+</style>
+<body id="body" class="normal">
 <form action="javascript:login_user()">
-    <p><label>
+    <p id="email" class="normal"><label>
         Email:
-        <input type="text" name="uid" id="uid" required>
+        <input class="normal" type="text" name="uid" id="uid" required>
     </label></p>
-    <p><label>
+    <p id="passwordd" class="normal"><label>
         Password:
-        <input type="password" name="password" id="password" required>
+        <input class="normal" type="password" name="password" id="password" required>
     </label></p>
-    <p>
+    <p id="logind" class="normal">
         <button>Login</button>
     </p>
 </form>
 
+<body id="body" class="normal" onclick= "swapp()">
+<script>
+    swapp()
+    function swapp(){
+        ld =  localStorage.getItem("storageName");
+        if(ld==0){
+            document.getElementById('body').className = "normal";
+            document.getElementById('email').className = "normal";
+            document.getElementById('passwordd').className = "normal";
+            document.getElementById('logind').className = "normal";
+            document.getElementById('uid').className = "normal";
+            document.getElementById('password').className = "normal";
+            console.log("helo");
+        }
+        else{
+            document.getElementById('body').className = "lightmode";
+            document.getElementById('email').className = "lightmode";
+            document.getElementById('passwordd').className = "lightmode";
+            document.getElementById('logind').className = "lightmode";
+            document.getElementById('uid').className = "lightmode";
+            document.getElementById('password').className = "lightmode";
+            console.log("heldo");
+        }
+    }
+</script>
 <script>
     // URL for deployment
     var url = "http://stocktify.stu.nighthawkcodingsociety.com/"
