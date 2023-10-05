@@ -18,7 +18,7 @@ search_exclude: true
     swapp()
     function swapp(){
         ld =  localStorage.getItem("storageName");
-        if(ld==0){
+        if(ld%2==0){
             document.getElementById('body').className = "normal";
             console.log("helo");
         }
