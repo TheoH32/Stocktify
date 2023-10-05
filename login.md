@@ -19,7 +19,7 @@ layout: post
 
 <script>
     // URL for deployment
-    var url = "https://stocktifybackend.duckdns.org"
+    var url = "http://stocktify.stu.nighthawkcodingsociety.com/"
     // Comment out next line for local testing
     // url = "http://localhost:8085"
     // Authenticate endpoint
@@ -56,7 +56,7 @@ layout: post
             }
             // Success!!!
             // Redirect to Database location
-            window.location.href = "/APCSA/data/database";
+            // window.location.href = "/APCSA/data/database";
         })
     }
 
