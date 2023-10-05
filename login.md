@@ -16,13 +16,13 @@ layout: post
 <form action="javascript:login_user()">
     <p id="email" class="normal"><label>
         Email:
-        <input type="text" name="uid" id="uid" required>
+        <input class="normal" type="text" name="uid" id="uid" required>
     </label></p>
-    <p id="password" class="normal"><label>
+    <p id="passwordd" class="normal"><label>
         Password:
-        <input type="password" name="password" id="password" required>
+        <input class="normal" type="password" name="password" id="password" required>
     </label></p>
-    <p id="login" class="normal">
+    <p id="logind" class="normal">
         <button>Login</button>
     </p>
 </form>
@@ -35,15 +35,19 @@ layout: post
         if(ld==0){
             document.getElementById('body').className = "normal";
             document.getElementById('email').className = "normal";
+            document.getElementById('passwordd').className = "normal";
+            document.getElementById('logind').className = "normal";
+            document.getElementById('uid').className = "normal";
             document.getElementById('password').className = "normal";
-            document.getElementById('login').className = "normal";
             console.log("helo");
         }
         else{
             document.getElementById('body').className = "lightmode";
             document.getElementById('email').className = "lightmode";
+            document.getElementById('passwordd').className = "lightmode";
+            document.getElementById('logind').className = "lightmode";
+            document.getElementById('uid').className = "lightmode";
             document.getElementById('password').className = "lightmode";
-            document.getElementById('login').className = "lightmode";
             console.log("heldo");
         }
     }

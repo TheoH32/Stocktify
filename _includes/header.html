@@ -67,7 +67,6 @@
                 <li><a id="login" class="navdark" href="/Stocktify/login">Log In</a></li>
                 <li><a id="stock" class="navdark" href="/Stocktify/stocks">Stocks</a></li>
                 <li><a id="play" class="navdark" href="/Stocktify/my_playlist">My Playlist</a></li>
-                <li><a id="about" class="navdark" href="/Stocktify/about">Login</a></li>
                 <li><a id="o" class="navdark" href="#"></a></li>
             </ul>
         </nav>
@@ -78,8 +77,20 @@
 </body>
 </html>
 <script>
-    var ld = 0
-    switched();
+    //var ld = 0
+    
+    var ld =  localStorage.getItem("storageName");
+    console.log("bob", ld)
+    if (ld==1){
+        var switchimage = document.getElementById("switch");
+        switchimage.src = "images/StocktifySwitchLight.png"
+        document.getElementById('login').className = "navlight";
+        document.getElementById('stock').className = "navlight";
+        document.getElementById('play').className = "navlight";
+        document.getElementById('o').className = "navlight";
+        document.getElementById('heada').className = "headalight";
+    }
+    //switched();
     function switched(){
         var switchimage = document.getElementById("switch");
         if(ld==0){
@@ -87,7 +98,6 @@
             document.getElementById('login').className = "navlight";
             document.getElementById('stock').className = "navlight";
             document.getElementById('play').className = "navlight";
-            document.getElementById('about').className = "navlight";
             document.getElementById('o').className = "navlight";
             document.getElementById('heada').className = "headalight";
             ld++
@@ -99,7 +109,6 @@
             document.getElementById('login').className = "navdark";
             document.getElementById('stock').className = "navdark";
             document.getElementById('play').className = "navdark";
-            document.getElementById('about').className = "navdark";
             document.getElementById('o').className = "navdark";
             document.getElementById('heada').className = "headadark";
             ld--
