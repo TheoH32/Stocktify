@@ -53,7 +53,7 @@ layout: post
     }
     
     // URL for deployment
-    var url = "https://stocktify.stu.nighthawkcodingsociety.com/"
+    var url = "https://stocktify.stu.nighthawkcodingsociety.com"
     // Comment out next line for local testing
     // url = "http://localhost:8085"
     // Authenticate endpoint
