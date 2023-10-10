@@ -51,10 +51,9 @@ layout: post
             console.log("heldo");
         }
     }
-</script>
-<script>
+    
     // URL for deployment
-    var url = "http://stocktify.stu.nighthawkcodingsociety.com/"
+    var url = "https://stocktify.stu.nighthawkcodingsociety.com/"
     // Comment out next line for local testing
     // url = "http://localhost:8085"
     // Authenticate endpoint
