@@ -51,22 +51,19 @@ layout: post
             console.log("heldo");
         }
     }
-    
     // URL for deployment
     var url = "https://stocktify.stu.nighthawkcodingsociety.com"
     // Comment out next line for local testing
     // url = "http://localhost:8085"
     // Authenticate endpoint
     const login_url = url + '/authenticate';
-
-
     function login_user(){
         // Set body to include login data
         const body = {
             email: document.getElementById("uid").value,
             password: document.getElementById("password").value,
         };
-
+        console.log(JSON.stringify(body));
         // Set Headers to support cross origin
         const requestOptions = {
             method: 'POST',
@@ -78,7 +75,6 @@ layout: post
                 "content-type": "application/json",
             },
         };
-
         // Fetch JWT
         fetch(login_url, requestOptions)
         .then(response => {
@@ -90,7 +86,7 @@ layout: post
             }
             // Success!!!
             // Redirect to Database location
-            // window.location.href = "/APCSA/data/database";
+            // window.location.href = "/stocks";
         })
     }
 
