@@ -73,7 +73,7 @@ layout: post
             body: JSON.stringify(body),
             headers: {
                 "content-type": "application/json",
-                "Access-Control-Allow-Credentials": true,
+                "Access-Control-Allow-Credentials": "true",
             },
         };
         // Fetch JWT
