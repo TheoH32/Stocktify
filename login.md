@@ -74,6 +74,7 @@ layout: post
             headers: {
                 "content-type": "application/json",
                 "Access-Control-Allow-Credentials": "true",
+                "Access-Control-Allow-Origin": "*",
             },
         };
         // Fetch JWT
@@ -87,7 +88,7 @@ layout: post
             }
             // Success!!!
             // Redirect to Database location
-            // window.location.href = "/stocks";
+            window.location.href = "/stocks";
         })
     }
 
