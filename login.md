@@ -88,7 +88,7 @@ layout: post
             }
             // Success!!!
             // Redirect to Database location
-            window.location.href = "/stocks";
+            window.location.href = "/Stocktify/stocks";
         })
     }
 
