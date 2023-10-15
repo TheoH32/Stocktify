@@ -1,0 +1,16 @@
+current directory: /Users/theo/vscode/Stocktify/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+/Users/theo/.rbenv/versions/3.1.4/bin/ruby -I /Users/theo/.rbenv/versions/3.1.4/lib/ruby/site_ruby/3.1.0 -r ./siteconf20231014-34774-ixfjid.rb extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Users/theo/vscode/Stocktify/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make "DESTDIR=" clean
+
+current directory: /Users/theo/vscode/Stocktify/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make "DESTDIR="
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/theo/vscode/Stocktify/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20231014-34774-d63j4k
