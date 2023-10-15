@@ -48,10 +48,12 @@ search_exclude: true
         border-bottom-left-radius: 10px;
     }
     .box2 {
-        background-color: hsl(184, 100%, 22%);
+        background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg") no-repeat center center;
+        background-size: cover;
     }
     .box3 {
-        background-color: hsl(179, 100%, 13%);
+        background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg") no-repeat center center;
+        background-size: cover;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
     }
