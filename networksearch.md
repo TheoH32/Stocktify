@@ -2,10 +2,6 @@
 layout: home
 search_exclude: true
 ---
----
-layout: home
-search_exclude: true
----
 
 <style>
     .normal{
@@ -45,6 +41,10 @@ search_exclude: true
 <!-- Output area to display the result -->
 <h3>Result:</h3>
 <p id="output"></p>
+
+<div style="background-color: #e0e0e0; width: 100%; height: 30px; position: relative;">
+    <div id="progressBar" style="background-color: #4CAF50; width: 0%; height: 100%;"></div>
+</div>
 
 <script>
     class App {
@@ -199,6 +199,24 @@ search_exclude: true
         const result = app.trainAndPredict(num1, num2);
 
         document.getElementById('output').textContent = `Prediction Result: ${result}`;
+    }
+    function executePrediction() {
+        const num1 = parseInt(document.getElementById('num1').value, 10);
+        const num2 = parseInt(document.getElementById('num2').value, 10);
+
+        const app = new App();
+        const predictions = [];
+        for (let i = 0; i < 10; i++) {
+            predictions.push(app.trainAndPredict(num1, num2));
+        }
+        const top3 = predictions.sort((a, b) => b - a).slice(0, 3);
+        const averageOfTop3 = top3.reduce((acc, val) => acc + val, 0) / top3.length;
+
+        document.getElementById('output').textContent = `Prediction Result: ${averageOfTop3.toFixed(2)}`;
+
+        // Update the progress bar
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = `${averageOfTop3 * 100}%`;
     }
 </script>
 
