@@ -30,13 +30,13 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
 
 <body>
 <div class="column">
-    <img src="image1.jpg" alt="Image 1" class="rounded-image">
+    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Image 1" class="rounded-image">
   </div>
   <div class="column">
-    <img src="image2.jpg" alt="Image 2" class="rounded-image">
+    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg" alt="Image 2" class="rounded-image">
   </div>
   <div class="column">
-    <img src="image3.jpg" alt="Image 3" class="rounded-image">
+    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg" alt="Image 3" class="rounded-image">
   </div>
 </body>
 
