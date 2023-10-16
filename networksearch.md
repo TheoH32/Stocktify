@@ -82,16 +82,22 @@ search_exclude: true
 </script>
 <!-- Neural Network Input Fields -->
 <div>
-    <label for="input1">Input 1:</label>
-    <input type="number" id="input1" name="input1">
-    
-    <label for="input2">Input 2:</label>
-    <input type="number" id="input2" name="input2">
+<h2>Neural Network Prediction</h2>
+<p>Enter two numerical values to get a prediction from the neural network:</p>
 
-    <button onclick="post_data_to_network()">Get Prediction</button>
+<label for="input1">Input 1:</label>
+<input type="number" id="input1" name="input1" placeholder="Enter first value">
+<br>
 
-    <label for="output">Prediction Output:</label>
-    <input type="text" id="output" name="output" readonly>
+<label for="input2">Input 2:</label>
+<input type="number" id="input2" name="input2" placeholder="Enter second value">
+<br>
+
+<button onclick="post_data_to_network()">Get Prediction</button>
+<br>
+
+<label for="output">Prediction Output:</label>
+<input type="text" id="output" name="output" readonly placeholder="Predictionwill appear here">
 </div>
 
 </body>
