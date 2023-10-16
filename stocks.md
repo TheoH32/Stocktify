@@ -127,19 +127,19 @@ search_exclude: true
         <div class="box box1">
             <div class="content">
                 <h1>S&P 500</h1>
-                <p>Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip.</p>
+                <p>Comprising 500 of the largest publicly traded companies in the United States, it offers a diversified snapshot of the country's economy. Investors often use it as a benchmark to evaluate their portfolio performance, making it a crucial tool for financial analysis and decision-making.</p>
             </div>
         </div>
         <div class="box box2">
             <div class="content">
                 <h1>NASDAQ</h1>
-                <p>Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures.</p>
+                <p>Leading U.S. stock exchange known for its technology-focused and innovation-driven approach, hosting many technology and internet giants, making it a hub for tech-based investments.</p>
             </div>
         </div>
         <div class="box box3">
             <div class="content">
                 <h1>DOW JONES</h1>
-                <p>Cruise in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.</p>
+                <p>One of the oldest and most well-known stock market indices in the world. Comprised of 30 major American companies, it provides a snapshot of the overall health of the U.S. stock market.</p>
             </div>
         </div>
     </div>
