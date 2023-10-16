@@ -13,30 +13,54 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
     .column {
       float: left;
       width: 33.33%;
-      padding: 10px;
+      padding: 5px;
       box-sizing: border-box;
+      position: relative;
     }
 
     .rounded-image {
-      border-radius: 20px;
+      border-radius: 10px;
       width: 100%;
       max-width: 200px;
-      height: auto;
+      height: 400px;
       display: block;
       margin: 0 auto;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5); /* Background color for the overlay */
+      color: #fff; /* Text color on the overlay */
     }
 </style>
 
 
 <body>
-<div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Image 1" class="rounded-image">
+  <div class="column">
+    <div class="image-overlay">
+      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Image 1" class="rounded-image">
+      <p>Image 1 Text Overlay</p>
+    </div>
   </div>
   <div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg" alt="Image 2" class="rounded-image">
+    <div class="image-overlay">
+      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg" alt="Image 2" class="rounded-image">
+      <p>Image 2 Text Overlay</p>
+    </div>
   </div>
   <div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg" alt="Image 3" class="rounded-image">
+    <div class="image-overlay">
+      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg" alt="Image 3" class="rounded-image">
+      <p>Image 3 Text Overlay</p>
+    </div>
   </div>
 </body>
 
