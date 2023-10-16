@@ -2,6 +2,10 @@
 layout: home
 search_exclude: true
 ---
+---
+layout: home
+search_exclude: true
+---
 
 <style>
     .normal{
@@ -28,6 +32,7 @@ search_exclude: true
         }
     }
 </script>
+
 <script>
     // URL for deployment
     var url = "https://stocktify.stu.nighthawkcodingsociety.com";
@@ -75,3 +80,18 @@ search_exclude: true
 
 
 </script>
+<!-- Neural Network Input Fields -->
+<div>
+    <label for="input1">Input 1:</label>
+    <input type="number" id="input1" name="input1">
+    
+    <label for="input2">Input 2:</label>
+    <input type="number" id="input2" name="input2">
+
+    <button onclick="post_data_to_network()">Get Prediction</button>
+
+    <label for="output">Prediction Output:</label>
+    <input type="text" id="output" name="output" readonly>
+</div>
+
+</body>
