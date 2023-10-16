@@ -30,10 +30,10 @@ search_exclude: true
 </script>
 
 <!-- Input fields for num1 and num2 -->
-<label for="num1">Number 1:</label>
+<label for="num1">P/E Ratio: </label>
 <input type="number" id="num1" name="num1">
 <br>
-<label for="num2">Number 2:</label>
+<label for="num2">Earnings Growth Rate: </label>
 <input type="number" id="num2" name="num2">
 <br>
 <button onclick="executePrediction()">Predict</button>
