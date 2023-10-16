@@ -2,8 +2,53 @@
 layout: home
 search_exclude: true
 ---
+<!-- 
+images:
+https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg
+https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg
+https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
+
 
 <style>
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .rounded-image {
+      border-radius: 50%;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+</style>
+
+
+<body>
+<div class="column">
+    <img src="image1.jpg" alt="Image 1" class="rounded-image">
+  </div>
+  <div class="column">
+    <img src="image2.jpg" alt="Image 2" class="rounded-image">
+  </div>
+  <div class="column">
+    <img src="image3.jpg" alt="Image 3" class="rounded-image">
+  </div>
+</body>
+
+
+
+
+
+
+
+
+
+<!-- <style>
     .normal {
         background-color: #121212 !important;
         color: white !important;
@@ -152,4 +197,4 @@ search_exclude: true
     </div>
   </div> -->
   
-</body>
+</body> -->
