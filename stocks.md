@@ -40,6 +40,7 @@ search_exclude: true
         justify-content: center;
         align-items: center;
         flex-flow: wrap;
+        cursor: pointer;
     }
     .box {
         padding: 15px;
@@ -66,6 +67,7 @@ search_exclude: true
     }
     .content {
         padding: 10px;
+        cursor: pointer;
     }
     h1 {
         color: hsl(0, 0%, 95%);
@@ -117,7 +119,7 @@ search_exclude: true
                 <p>NASDAQ is a tech-focused U.S. stock exchange, home to giants like Apple and Amazon, known for its electronic trading innovations.</p>
             </div>
         </div>
-        <div class="box box3">
+        <div href="/dowjones.md" class="box box3">
             <div class="content">
                 <h1>DOW JONES</h1>
                 <p>Dow Jones is a renowned U.S. stock market index, featuring leading companies, and is often used as a benchmark for the broader economic landscape.</p>
