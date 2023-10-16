@@ -40,6 +40,7 @@ search_exclude: true
         padding: 15px;
         min-height: 430px;
         transition: background-color 0.3s;
+        filter: grayscale(50%); /* Apply a full grayscale effect to the images */
     }
     .box1 {
         background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg") no-repeat center center;
@@ -52,7 +53,7 @@ search_exclude: true
         background-size: cover;
     }
     .box3 {
-        background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg") no-repeat center center;
+        background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock11.avif") no-repeat center center;
         background-size: cover;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px;
@@ -65,9 +66,10 @@ search_exclude: true
         text-transform: uppercase;
         font-family: 'Lexend Deca', sans-serif;
         margin: 20px 0;
+        font-size: 50px;
     }
     p {
-        color: hsla(0, 0%, 100%, 0.75);
+        color: white;
         font-family: 'Lexend Deca', sans-serif;
     }
     .btn {
@@ -75,6 +77,9 @@ search_exclude: true
     }
     .box:hover {
         background-color: transparent;
+    }
+    .page-content {
+        width: 100%;
     }
 </style>
 
@@ -94,19 +99,19 @@ search_exclude: true
         <div class="box box1">
             <div class="content">
                 <h1>S&P 500</h1>
-                <p>Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip.</p>
+                <p>The S&P 500 is a prominent U.S. stock market index consisting of 500 leading publicly traded companies, often used as a key indicator of the overall health and performance of the U.S. economy.</p>
             </div>
         </div>
         <div class="box box2">
             <div class="content">
                 <h1>NASDAQ</h1>
-                <p>Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures.</p>
+                <p>NASDAQ is a tech-focused U.S. stock exchange, home to giants like Apple and Amazon, known for its electronic trading innovations.</p>
             </div>
         </div>
         <div class="box box3">
             <div class="content">
                 <h1>DOW JONES</h1>
-                <p>Cruise in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.</p>
+                <p>Dow Jones is a renowned U.S. stock market index, featuring leading companies, and is often used as a benchmark for the broader economic landscape.</p>
             </div>
         </div>
     </div>
