@@ -76,6 +76,39 @@ search_exclude: true
     .box:hover {
         background-color: transparent;
     }
+
+    .image-container {
+      position: relative;
+      width: 300px; /* Adjust the width and height as needed */
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px; /* Rounded corners */
+    }
+
+    .image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Maintain aspect ratio while covering container */
+    }
+
+    .text-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      color: #fff;
+    }
+
+    .text {
+      text-align: center;
+      font-size: 24px;
+    }
 </style>
 
 <body id="body" class="normal" onclick="swapp()">
@@ -110,4 +143,13 @@ search_exclude: true
             </div>
         </div>
     </div>
+    <div class="image-container">
+    <img class="image" src="your-image.jpg" alt="Your Image">
+    <div class="text-overlay">
+      <div class="text">
+        Text Overlay
+      </div>
+    </div>
+  </div>
+  
 </body>
