@@ -43,27 +43,6 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
 </style>
 
 
-<body>
-  <div class="column">
-    <div class="image-overlay">
-      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Image 1" class="rounded-image">
-      <p>Image 1 Text Overlay</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="image-overlay">
-      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg" alt="Image 2" class="rounded-image">
-      <p>Image 2 Text Overlay</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="image-overlay">
-      <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg" alt="Image 3" class="rounded-image">
-      <p>Image 3 Text Overlay</p>
-    </div>
-  </div>
-</body>
-
 
 
 
