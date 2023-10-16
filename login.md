@@ -92,9 +92,11 @@ layout: post
             localStorage.setItem("localPassword", password);
             console.log(localStorage.getItem("localEmail"));
             console.log(localStorage.getItem("localPassword"));
-            window.location.href = "/Stocktify/stocks";
+            window.location.href = "/Stocktify/login.md";
         })
     }
-
-
+    if (localStorage.getItem("storageName") == null) {
+    }
+    else {
+    }
 </script>
