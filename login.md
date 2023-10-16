@@ -93,6 +93,8 @@ layout: post
             console.log(localStorage.getItem("Local Email:" + "localEmail"));
             console.log(localStorage.getItem("Local Password:" + "localPassword"));
             window.location.href = "/Stocktify/stocks";
+            console.log(localStorage.getItem("Local Email:" + "localEmail"));
+            console.log(localStorage.getItem("Local Password:" + "localPassword"));
         })
     }
 
