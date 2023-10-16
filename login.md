@@ -84,6 +84,10 @@ layout: post
             if (!response.ok) {
                 const errorMsg = 'Login error: ' + response.status;
                 console.log(errorMsg);
+                localStorage.setItem("localEmail", email);
+                localStorage.setItem("localPassword", password);
+                console.log(localStorage.getItem("Local Email:" + "localEmail"));
+                console.log(localStorage.getItem("Local Password:" + "localPassword"));
                 return;
             }
             // Success!!!
