@@ -90,11 +90,9 @@ layout: post
             // Redirect to Database location
             localStorage.setItem("localEmail", email);
             localStorage.setItem("localPassword", password);
-            console.log(localStorage.getItem("Local Email:" + "localEmail"));
-            console.log(localStorage.getItem("Local Password:" + "localPassword"));
+            console.log(localStorage.getItem("localEmail"));
+            console.log(localStorage.getItem("localPassword"));
             window.location.href = "/Stocktify/stocks";
-            console.log(localStorage.getItem("Local Email:" + "localEmail"));
-            console.log(localStorage.getItem("Local Password:" + "localPassword"));
         })
     }
 
