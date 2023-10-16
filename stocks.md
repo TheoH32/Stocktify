@@ -2,53 +2,9 @@
 layout: home
 search_exclude: true
 ---
-<!-- 
-images:
-https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg
-https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg
-https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
 
 
 <style>
-    .column {
-      float: left;
-      width: 33.33%;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-
-    .rounded-image {
-      border-radius: 20px;
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-</style>
-
-
-<body>
-<div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Image 1" class="rounded-image">
-  </div>
-  <div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock4.jpg" alt="Image 2" class="rounded-image">
-  </div>
-  <div class="column">
-    <img src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg" alt="Image 3" class="rounded-image">
-  </div>
-</body>
-
-
-
-
-
-
-
-
-
-<!-- <style>
     .normal {
         background-color: #121212 !important;
         color: white !important;
@@ -72,6 +28,11 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
         justify-content: center;
         align-content: center;
     }
+    .box:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Change the background color on hover */
+        transform: scale(1.05); /* Increase the scale slightly on hover */
+        transition: 0.15s; /* Add transition effect */
+    }
     .box-conatiner {
         width: 100%;
         max-width: 1440px;
@@ -81,11 +42,11 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
         flex-flow: wrap;
     }
     .box {
-        width: 269px;
         padding: 15px;
         min-height: 430px;
         transition: background-color 0.3s;
-        filter: grayscale(50%); /* Apply a full grayscale effect to the images */
+        filter: grayscale(35%); /* Apply a full grayscale effect to the images */
+        flex: 1; /* Allow the boxes to grow and shrink to fit the available space equally */
     }
     .box1 {
         background: url("https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg") no-repeat center center;
@@ -111,7 +72,7 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
         text-transform: uppercase;
         font-family: 'Lexend Deca', sans-serif;
         margin: 20px 0;
-        font-size: 50px;
+        font-size: 70px;
     }
     p {
         color: white;
@@ -125,6 +86,9 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
     }
     .page-content {
         width: 100%;
+    }
+    .wrapper {
+        max-width: 100%;
     }
 </style>
 
@@ -160,12 +124,4 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
             </div>
         </div>
     </div>
-    <!-- <div class="image-container">
-    <img class="image" src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Your Image">
-    <div class="text-overlay">
-      <div class="text">
-        Text Overlay
-      </div>
-    </div>
-  </div> -->
 
