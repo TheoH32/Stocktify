@@ -6,7 +6,7 @@ search_exclude: true
 <style>
     .normal{
         background-color: #121212 !important;
-        color: white !important:
+        color: white !important;
     }
     .lightmode {
         background-color: #F6FFF5 !important;
