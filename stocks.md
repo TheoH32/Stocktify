@@ -144,7 +144,7 @@ search_exclude: true
         </div>
     </div>
     <div class="image-container">
-    <img class="image" src="your-image.jpg" alt="Your Image">
+    <img class="image" src="https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock1.jpeg" alt="Your Image">
     <div class="text-overlay">
       <div class="text">
         Text Overlay
