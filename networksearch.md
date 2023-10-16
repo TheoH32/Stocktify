@@ -33,7 +33,19 @@ search_exclude: true
     }
 </script>
 
-<script>
+<!-- Input fields for num1 and num2 -->
+<label for="num1">Number 1:</label>
+<input type="number" id="num1" name="num1">
+<br>
+<label for="num2">Number 2:</label>
+<input type="number" id="num2" name="num2">
+<br>
+<button onclick="executePrediction()">Predict</button>
+
+<!-- Output area to display the result -->
+<h3>Result:</h3>
+<p id="output"></p>
+
 <script>
     class App {
         constructor() {}
@@ -189,25 +201,5 @@ search_exclude: true
         document.getElementById('output').textContent = `Prediction Result: ${result}`;
     }
 </script>
-</script>
-<!-- Neural Network Input Fields -->
-<div>
-<h2>Neural Network Prediction</h2>
-<p>Enter two numerical values to get a prediction from the neural network:</p>
-
-<label for="input1">Input 1:</label>
-<input type="number" id="input1" name="input1" placeholder="Enter first value">
-<br>
-
-<label for="input2">Input 2:</label>
-<input type="number" id="input2" name="input2" placeholder="Enter second value">
-<br>
-
-<button onclick="post_data_to_network()">Get Prediction</button>
-<br>
-
-<label for="output">Prediction Output:</label>
-<input type="text" id="output" name="output" readonly placeholder="Predictionwill appear here">
-</div>
 
 </body>
