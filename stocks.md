@@ -18,7 +18,7 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
     }
 
     .rounded-image {
-      border-radius: 50%;
+      border-radius: 20px;
       width: 100%;
       max-width: 200px;
       height: auto;
@@ -168,5 +168,4 @@ https://raw.githubusercontent.com/TheoH32/Stocktify/main/images/stock3.jpeg -->
       </div>
     </div>
   </div> -->
-  
-</body> -->
+
