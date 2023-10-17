@@ -33,7 +33,7 @@ search_exclude: true
         transform: scale(1.05); /* Increase the scale slightly on hover */
         transition: 0.15s; /* Add transition effect */
     }
-    .box-conatiner {
+    .box-container {
         width: 100%;
         max-width: 1440px;
         display: flex;
@@ -106,7 +106,7 @@ search_exclude: true
             }
         }
     </script>
-    <div class="box-conatiner">
+    <div class="box-container">
         <div class="box box1">
             <div class="content">
                 <h1>S&P 500</h1>
