@@ -128,7 +128,7 @@ layout: post
                     console.log(localStorage.getItem("localPassword"));
                     localStorage.setItem("loggedIn", "true");
                     showAccountDetails();
-                    window.location.href = "/Stocktify/login.md";
+                    window.location.href = "/Stocktify/login";
                 });
         }
     </script>
