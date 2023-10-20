@@ -26,7 +26,7 @@ title: Chatbot
         const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
         try {
-            const response = await fetch('https://stocktifybot.vercel.app/api/generate', {
+            const response = await fetch('https://stocktifybot.vercel.app/api/chatbot', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
