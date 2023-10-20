@@ -33,7 +33,7 @@ title: Chatbot
                 },
                 body: JSON.stringify({ aigf: userInput }),
                 signal: signal,
-                mode: 'cors' // Add this line to enable CORS
+                mode: 'no-cors' // Add this line to enable CORS
             });
 
             const data = await response.json();
