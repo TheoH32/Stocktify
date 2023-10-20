@@ -27,14 +27,14 @@ title: Chatbot
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
             try {
-                const response = await fetch('https://stocktifybot.vercel.app/api/generate', {
+                const response = await fetch('https://www.corsproxy.io/stocktifybot.vercel.app/api/generate', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ aigf: userInput }),
                     signal: signal,
-                    mode: 'no-cors' // Add this line to enable CORS
+                    mode: 'cors' // Add this line to enable CORS
                 });
 
                 const data = await response.json();
