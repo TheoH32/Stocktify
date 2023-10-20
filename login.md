@@ -4,39 +4,98 @@ layout: post
 ---
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Login</title>
     <style>
+        .post-title {
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            width: 40%;
+            margin-left: 30%;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: grey;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
         .normal {
-            background-color: #121212 !important;
-            color: white !important;
+            background-color: #121212;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .normal input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid white;
+        }
+        .normal button {
+            background-color: #121212;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+        }
+        .normal button:hover {
+            background-color: #333;
         }
         .lightmode {
-            background-color: #F6FFF5 !important;
-            color: black !important;
+            background-color: #F6FFF5;
+            color: black;
+        }
+        #logind {
+            display: flex;
+            justify-content: center;
+            width: 60%;
+            margin-left: 20%;
         }
     </style>
 </head>
-<body id="body" class="normal">
-    <!-- Login Screen -->
-    <div id="loginScreen">
-        <form action="javascript:login_user()">
-            <p id="email" class="normal"><label>
-                Email:
-                <input class="normal" type="text" name="uid" id="uid" required>
-            </label></p>
-            <p id="passwordd" class="normal"><label>
-                Password:
-                <input class="normal" type="password" name="password" id="password" required>
-            </label></p>
-            <p id="logind" class="normal">
-                <button>Login</button>
-            </p>
-        </form>
-    </div>
-    <!-- Account Details Screen (Initially Hidden) -->
-    <div id="accountDetails" style="display: none;">
-        <!-- Account details will go here -->
-        <p>Welcome to your account. Your account details are displayed here.</p>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen">
+            <form action="javascript:login_user()">
+                <p id="email" class="normal">
+                    <label>Email:
+                        <input class="normal" type="text" name="uid" id="uid" required>
+                    </label>
+                </p>
+                <p id="passwordd" class="normal">
+                    <label>Password:
+                        <input class="normal" type="password" name="password" id="password" required>
+                    </label>
+                </p>
+                <p id="logind" class="normal">
+                    <button>Login</button>
+                </p>
+            </form>
+        </div>
+        <!-- Account Details Screen (Initially Hidden) -->
+        <div id="accountDetails" style="display: none;">
+            <!-- Account details will go here -->
+            <p>Welcome to your account. Your account details are displayed here.</p>
+        </div>
     </div>
 </body>
 
