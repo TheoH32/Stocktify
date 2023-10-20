@@ -31,7 +31,6 @@ title: Chatbot
                     method: 'POST',
                     headers: {
                         'x-cors-api-key': 'temp_a9eef449b7264b366ebb294c401d2419'
-                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ aigf: userInput }),
                     signal: signal,
