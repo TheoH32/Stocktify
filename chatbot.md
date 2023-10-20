@@ -27,10 +27,10 @@ title: Chatbot
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
             try {
-                const response = await fetch('https://proxy.cors.sh/https://stocktifybot.vercel.app/api/generate', {
+                const response = await fetch('https://www.corsproxy.io/stocktifybot.vercel.app/api/generate', {
                     method: 'POST',
                     headers: {
-                        'x-cors-api-key': 'temp_a9eef449b7264b366ebb294c401d2419'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ aigf: userInput }),
                     signal: signal,
