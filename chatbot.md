@@ -32,7 +32,8 @@ title: Chatbot
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ aigf: userInput }),
-                signal: signal
+                signal: signal,
+                mode: 'cors' // Add this line to enable CORS
             });
 
             const data = await response.json();
@@ -49,5 +50,4 @@ title: Chatbot
             clearTimeout(timeoutId);
         }
     }
-
 </script>
