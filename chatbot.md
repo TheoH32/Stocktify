@@ -38,10 +38,13 @@ title: Chatbot
                     mode: 'cors' // Add this line to enable CORS
                 });
 
-                const data = await response.json();
+                //const data = await response.json();
 
                 // Display Chatbot's response
-                chatHistory.innerHTML += `<div>Bot: ${data.result}</div>`;
+                //chatHistory.innerHTML += `<div>Bot: ${data.result}</div>`;
+                const responseText = await response.text();
+                console.log(responseText);
+
             } catch (error) {
                 if (error.name === 'AbortError') {
                     chatHistory.innerHTML += `<div>Error: Request timed out</div>`;
