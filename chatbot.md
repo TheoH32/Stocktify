@@ -32,7 +32,7 @@ title: Chatbot
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ animal: userInput }),
+                    body: JSON.stringify({ stockbot: userInput }),
                     signal: signal,
                     mode: 'cors' // Add this line to enable CORS
                 });
