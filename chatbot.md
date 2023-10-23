@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: Chatbot
 ---
 
@@ -12,6 +12,10 @@ title: Chatbot
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('send-button').addEventListener('click', sendMessage);
+        
+        function removeSpecialCharsAtStart(str) {
+           return str.replace(/^[^a-zA-Z]+/, '');
+        }
 
         async function sendMessage() {
             const userInput = document.getElementById('user-input').value;
@@ -27,13 +31,12 @@ title: Chatbot
             const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
             try {
-                const response = await fetch('https://proxy.cors.sh/https://stocktifybot.vercel.app/api/generate', {
+                const response = await fetch('https://stocktifybot.vercel.app/api/generate', {
                     method: 'POST',
                     headers: {
-                        'x-cors-api-key': 'temp_a9eef449b7264b366ebb294c401d2419'
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ aigf: userInput }),
+                    body: JSON.stringify({ stockbot: userInput }),
                     signal: signal,
                     mode: 'cors' // Add this line to enable CORS
                 });
@@ -41,7 +44,10 @@ title: Chatbot
                 const data = await response.json();
 
                 // Display Chatbot's response
-                chatHistory.innerHTML += `<div>Bot: ${data.result}</div>`;
+                chatHistory.innerHTML += `<div>Bot: ${removeSpecialCharsAtStart(data.result)}</div>`;
+                //const responseText = await response.text();
+                //console.log(responseText);
+
             } catch (error) {
                 if (error.name === 'AbortError') {
                     chatHistory.innerHTML += `<div>Error: Request timed out</div>`;
