@@ -12,6 +12,10 @@ title: Chatbot
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('send-button').addEventListener('click', sendMessage);
+        
+        function removeSpecialCharsAtStart(str) {
+           return str.replace(/^[^a-zA-Z]+/, '');
+        }
 
         async function sendMessage() {
             const userInput = document.getElementById('user-input').value;
@@ -40,7 +44,7 @@ title: Chatbot
                 const data = await response.json();
 
                 // Display Chatbot's response
-                chatHistory.innerHTML += `<div>Bot: ${data.result}</div>`;
+                chatHistory.innerHTML += `<div>Bot: ${removeSpecialCharsAtStart(data.result)}</div>`;
                 //const responseText = await response.text();
                 //console.log(responseText);
 
