@@ -41,8 +41,8 @@ title: Chatbot
 
                 // Display Chatbot's response
                 chatHistory.innerHTML += `<div>Bot: ${data.result}</div>`;
-                const responseText = await response.text();
-                console.log(responseText);
+                //const responseText = await response.text();
+                //console.log(responseText);
 
             } catch (error) {
                 if (error.name === 'AbortError') {
