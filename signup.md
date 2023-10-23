@@ -124,7 +124,7 @@ layout: post
 
             // Comment out next line for local testing
             // url = "http://localhost:8085";
-            const login_url = url + '/post';
+            const login_url = url + '/api/person/post'; 
             const body = {
                 name: document.getElementById("name").value,
                 email: document.getElementById("uid").value,
