@@ -23,7 +23,6 @@ layout: post
             margin: 0;
             display: flex;
             justify-content: center;
-            height: 100vh;
         }
         .container {
             background-color: grey;
@@ -69,6 +68,14 @@ layout: post
             width: 60%;
             margin-left: 20%;
         }
+        #signUpButton {
+            display: flex;
+            justify-content: center;
+            width: 20%;
+            margin: 10px 0px 0px;
+            margin-left: 40%;
+            background-color: light blue;
+        }
     </style>
 </head>
 <body>
@@ -97,6 +104,7 @@ layout: post
             <p>Welcome to your account. Your account details are displayed here.</p>
         </div>
     </div>
+    <button id="signUpButton" onclick="signUpSwitch()">Sign Up</button>
 </body>
 
 <script>
@@ -142,6 +150,10 @@ layout: post
         function showLoginScreen() {
             document.getElementById("loginScreen").style.display = "block";
             document.getElementById("accountDetails").style.display = "none";
+        }
+
+        function signUpSwitch() {
+            window.location.href = "/Stocktify/signup";
         }
 
         function login_user() {
@@ -190,4 +202,5 @@ layout: post
                     window.location.href = "/Stocktify/login";
                 });
         }
+
     </script>
