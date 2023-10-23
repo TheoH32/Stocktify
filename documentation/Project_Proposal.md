@@ -1,3 +1,9 @@
+---
+title: Project Proposal
+layout: post
+permalink: /documentation/proposal
+---
+
 # Project Proposal
 
 # Introduction
