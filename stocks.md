@@ -126,4 +126,60 @@ search_exclude: true
             </div>
         </div>
     </div>
+    <div>
+        <title>Stock Data</title>
+        <body>
+            <h1>Microsoft (MSFT) Stock Data</h1>
+            <div id="stock-data"></div>
+            <script>
+        // Function to fetch and display stock data from the API
+        async function fetchStockData() {
+            try {
+                const response = await fetch('https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata');
+                const data = await response.json();
+                // Extract the daily time series
+                const timeSeries = data['Time Series (Daily)'];
+                // Create a table to display the data
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <tr>
+                        <th>Date</th>
+                        <th>Open</th>
+                        <th>High</th>
+                        <th>Low</th>
+                        <th>Close</th>
+                        <th>Adjusted Close</th>
+                        <th>Volume</th>
+                        <th>Dividend Amount</th>
+                        <th>Split Coefficient</th>
+                    </tr>
+                `;
+                for (const date in timeSeries) {
+                    const rowData = timeSeries[date];
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${date}</td>
+                        <td>${rowData['1. open']}</td>
+                        <td>${rowData['2. high']}</td>
+                        <td>${rowData['3. low']}</td>
+                        <td>${rowData['4. close']}</td>
+                        <td>${rowData['5. adjusted close']}</td>
+                        <td>${rowData['6. volume']}</td>
+                        <td>${rowData['7. dividend amount']}</td>
+                        <td>${rowData['8. split coefficient']}</td>
+                    `;
+
+                    table.appendChild(row);
+                }
+                // Add the table to the stock-data div
+                document.getElementById('stock-data').appendChild(table);
+            } catch (error) {
+                console.error('Error fetching stock data:', error);
+            }
+        }
+        // Call the function to fetch and display the data
+        fetchStockData();
+    </script>
+        </body>
+    </div>
 
