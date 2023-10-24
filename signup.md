@@ -86,7 +86,7 @@ layout: post
             <form action="javascript:signUpUser()">
                 <p id="name" class="normal">
                     <label>Name:
-                        <input class="normal" type="text" name="name" id="name" required>
+                        <input class="normal" type="text" name="legalName" id="legalName" required>
                     </label>
                 </p>
                 <p id="email" class="normal">
@@ -94,7 +94,7 @@ layout: post
                         <input class="normal" type="text" name="uid" id="uid" required>
                     </label>
                 </p>
-                <p id="password" class="normal">
+                <p id="passwordd" class="normal">
                     <label>Password:
                         <input class="normal" type="password" name="password" id="password" required>
                     </label>
@@ -126,7 +126,7 @@ layout: post
             // url = "http://localhost:8085";
             const login_url = url + '/api/person/post'; 
             const body = {
-                name: document.getElementById("name").value,
+                name: document.getElementById("legalName").value,
                 email: document.getElementById("uid").value,
                 password: document.getElementById("password").value,
             };
