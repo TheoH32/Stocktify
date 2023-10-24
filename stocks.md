@@ -126,60 +126,85 @@ search_exclude: true
             </div>
         </div>
     </div>
-    <div>
-        <title>Stock Data</title>
-        <body>
-            <h1>Microsoft (MSFT) Stock Data</h1>
-            <div id="stock-data"></div>
-            <script>
-        // Function to fetch and display stock data from the API
-        async function fetchStockData() {
-            try {
-                const response = await fetch('https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata');
-                const data = await response.json();
-                // Extract the daily time series
-                const timeSeries = data['Time Series (Daily)'];
-                // Create a table to display the data
-                const table = document.createElement('table');
-                table.innerHTML = `
-                    <tr>
-                        <th>Date</th>
-                        <th>Open</th>
-                        <th>High</th>
-                        <th>Low</th>
-                        <th>Close</th>
-                        <th>Adjusted Close</th>
-                        <th>Volume</th>
-                        <th>Dividend Amount</th>
-                        <th>Split Coefficient</th>
-                    </tr>
-                `;
-                for (const date in timeSeries) {
-                    const rowData = timeSeries[date];
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${date}</td>
-                        <td>${rowData['1. open']}</td>
-                        <td>${rowData['2. high']}</td>
-                        <td>${rowData['3. low']}</td>
-                        <td>${rowData['4. close']}</td>
-                        <td>${rowData['5. adjusted close']}</td>
-                        <td>${rowData['6. volume']}</td>
-                        <td>${rowData['7. dividend amount']}</td>
-                        <td>${rowData['8. split coefficient']}</td>
-                    `;
 
-                    table.appendChild(row);
-                }
-                // Add the table to the stock-data div
-                document.getElementById('stock-data').appendChild(table);
-            } catch (error) {
-                console.error('Error fetching stock data:', error);
-            }
+<div>
+    <section class="team1">
+      <main id="content" class="main-content" role="main">
+        <table id="recipe">
+          <thead>
+            <tr
+            </tr>
+          </thead>
+          <tbody id="result">
+            <!-- generated rows -->
+          </tbody>
+        </table>
+      </main>
+    </section>
+  </div>
+
+<script>
+    // prepare HTML result container for new output
+    const resultContainer = document.getElementById("result");
+
+    // prepare fetch options
+    const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata";
+    const headers = {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    // fetch the API
+    fetch(url, headers)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+          const errorMsg = 'Database response error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
         }
-        // Call the function to fetch and display the data
-        fetchStockData();
-    </script>
-        </body>
-    </div>
+        // fetch the data from API
+        response.json().then(data => {
+          console.log(data);
+          for (let row in data) {
+            console.log(data[row]);
+            add_row(data[row]);
+          }
+        }).catch(err => {
+          console.error(err);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = err;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+        });
+      }).catch(err => {
+        console.error(err);
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.innerHTML = err;
+        tr.appendChild(td);
+        resultContainer.appendChild(tr);
+      });
 
+    function add_row(rowData) {
+      const tr = document.createElement("tr");
+      for (let key in rowData) {
+        const td = document.createElement("td");
+        td.innerHTML = rowData[key];
+        tr.appendChild(td);
+      }
+      resultContainer.appendChild(tr);
+    }
+<script>
