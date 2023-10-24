@@ -83,7 +83,7 @@ layout: post
     <div class="container">
         <!-- Login Screen -->
         <div id="loginScreen">
-            <form action="javascript:signUpUser()">
+            <form action="javascript:signUpRequest()">
                 <p id="name" class="normal">
                     <label>Name:
                         <input class="normal" type="text" name="legalName" id="legalName" required>
