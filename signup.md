@@ -159,4 +159,22 @@ layout: post
                     window.location.href = "/Stocktify/login";
                 });
     }
+
+    function signUpRequest() {
+        var requestOptions = {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'include',
+        };
+
+        let fetchName = document.getElementById("legalName").value
+        let fetchEmail = document.getElementById("uid").value
+        let fetchPassword = document.getElementById("password").value
+
+        fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/person/post?email=${fetchEmail}&password=${fetchPassword}@123&name=${fetchName}`, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+    }
 </script>
