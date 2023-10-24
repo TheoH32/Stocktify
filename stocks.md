@@ -132,7 +132,7 @@ search_exclude: true
       <main id="content" class="main-content" role="main">
         <table id="recipe">
           <thead>
-            <tr
+            <tr>
             </tr>
           </thead>
           <tbody id="result">
