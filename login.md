@@ -119,6 +119,7 @@ layout: post
 
         function showAccountDetails() {
             document.getElementById("loginScreen").style.display = "none";
+            document.getElementById("signUpButton").style.display = "none";
             document.getElementById("accountDetails").style.display = "block";
             
             // Create and append the email and stock elements
@@ -149,6 +150,7 @@ layout: post
 
         function showLoginScreen() {
             document.getElementById("loginScreen").style.display = "block";
+            document.getElementById("signUpButton").style.display = "block";
             document.getElementById("accountDetails").style.display = "none";
         }
 
