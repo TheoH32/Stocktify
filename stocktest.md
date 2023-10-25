@@ -12,7 +12,7 @@ title: Stocktest
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('send-button').addEventListener('click', getStockData);
-        
+
         async function getStockData() {
             const userInput = document.getElementById('user-input').value.trim().toUpperCase();
             const stockHistory = document.getElementById('stock-history');
@@ -30,13 +30,13 @@ title: Stocktest
                 const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
                     method: 'GET',
                     signal: signal,
-                    mode: 'cors' // Add this line to enable CORS
+                    mode: 'cors'
                 });
 
-                const data = await response.json();
+                const jsonData = await response.json();
 
-                // Display raw JSON data
-                stockHistory.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                // Parse and display the stock data
+                parseStockData(jsonData);
 
             } catch (error) {
                 if (error.name === 'AbortError') {
@@ -48,5 +48,14 @@ title: Stocktest
                 clearTimeout(timeoutId);
             }
         }
-    });
-</script>
+
+        function parseStockData(jsonData) {
+            const stockHistory = document.getElementById('stock-history');
+
+            // Extract meta data
+            const metaData = jsonData["Meta Data"];
+            const symbol = metaData["2. Symbol"];
+            const lastRefreshed = metaData["3. Last Refreshed"];
+
+            stockHistory.innerHTML += `<div>Stock Symbol: ${symbol}</div>`;
+            stock
