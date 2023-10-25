@@ -164,9 +164,10 @@ search_exclude: true
   // PRINT TEST
     // prepare HTML result container for new output
     const resultContainer = document.getElementById("result");
+    var ld =  localStorage.getItem("stockSymbol");
+    localStorage.setItem("stockSymbol", null);
 
-    // prepare fetch options
-    const url = "http://stocktify.stu.nighthawkcodingsociety.com/api/stockdata";
+    const oldurl = "http://stocktify.stu.nighthawkcodingsociety.com/api/stockdata";
     const headers = {
       method: 'GET',
       mode: 'cors',
@@ -177,52 +178,73 @@ search_exclude: true
       },
     };
 
-    // fetch the API
-    fetch(url, headers)
-      // response is a RESTful "promise" on any successful fetch
-      .then(response => {
-        // check for response errors
-        if (response.status !== 200) {
-          const errorMsg = 'Database response error: ' + response.status;
-          console.log(errorMsg);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = errorMsg;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-          return;
-        }
-        // fetch the data from API
-        response.json().then(data => {
-          console.log(data);
-          for (let row in data) {
-            console.log(data[row]);
-            add_row(data[row]);
-          }
-        }).catch(err => {
-          console.error(err);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = err;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-        });
-      }).catch(err => {
-        console.error(err);
-        const tr = document.createElement("tr");
-        const td = document.createElement("td");
-        td.innerHTML = err;
-        tr.appendChild(td);
-        resultContainer.appendChild(tr);
-      });
+    document.getElementById("stockDataForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        let symbol = document.getElementById("symbolInput").value;
+        localStorage.setItem("stockSymbol", symbol);
+        let url=oldurl+"?symbol="+symbol;
+        searchStockData(url)
 
-    function add_row(rowData) {
-      const tr = document.createElement("tr");
-      for (let key in rowData) {
-        const td = document.createElement("td");
-        td.innerHTML = rowData[key];
-        tr.appendChild(td);
-      }
-      resultContainer.appendChild(tr);
+    });
+    function searchStockData(symbol) {
+        fetch(symbol)
+            .then(response => response.json())
+            .then(data => {
+                // Handle the data or display it on the page
+                document.getElementById("result").textContent = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
     }
+    // prepare fetch options
+
+    // // fetch the API
+    // fetch(url, headers)
+    //   // response is a RESTful "promise" on any successful fetch
+    //   .then(response => {
+    //     // check for response errors
+    //     if (response.status !== 200) {
+    //       const errorMsg = 'Database response error: ' + response.status;
+    //       console.log(errorMsg);
+    //       const tr = document.createElement("tr");
+    //       const td = document.createElement("td");
+    //       td.innerHTML = errorMsg;
+    //       tr.appendChild(td);
+    //       resultContainer.appendChild(tr);
+    //       return;
+    //     }
+    //     // fetch the data from API
+    //     response.json().then(data => {
+    //       console.log(data);
+    //       for (let row in data) {
+    //         console.log(data[row]);
+    //         add_row(data[row]);
+    //       }
+    //     }).catch(err => {
+    //       console.error(err);
+    //       const tr = document.createElement("tr");
+    //       const td = document.createElement("td");
+    //       td.innerHTML = err;
+    //       tr.appendChild(td);
+    //       resultContainer.appendChild(tr);
+    //     });
+    //   }).catch(err => {
+    //     console.error(err);
+    //     const tr = document.createElement("tr");
+    //     const td = document.createElement("td");
+    //     td.innerHTML = err;
+    //     tr.appendChild(td);
+    //     resultContainer.appendChild(tr);
+    //   });
+
+    // function add_row(rowData) {
+    //   const tr = document.createElement("tr");
+    //   for (let key in rowData) {
+    //     const td = document.createElement("td");
+    //     td.innerHTML = rowData[key];
+    //     tr.appendChild(td);
+    //   }
+    //   resultContainer.appendChild(tr);
+    // }
 </script>
