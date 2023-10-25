@@ -1,6 +1,6 @@
 ---
 layout: post
-search_exclude: true
+search_exclude: false
 ---
 
 # AP CSA Review Ticket: TGRK Big Tracta
