@@ -58,4 +58,26 @@ title: Stocktest
             const lastRefreshed = metaData["3. Last Refreshed"];
 
             stockHistory.innerHTML += `<div>Stock Symbol: ${symbol}</div>`;
-            stock
+            stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
+
+            // Extract time series data
+            const timeSeries = jsonData["Time Series (Daily)"];
+            for (const date in timeSeries) {
+                const dailyData = timeSeries[date];
+                const open = dailyData["1. open"];
+                const high = dailyData["2. high"];
+                const low = dailyData["3. low"];
+                const close = dailyData["4. close"];
+                const volume = dailyData["6. volume"];
+
+                stockHistory.innerHTML += `<div>Date: ${date}</div>`;
+                stockHistory.innerHTML += `<div>Open: ${open}</div>`;
+                stockHistory.innerHTML += `<div>High: ${high}</div>`;
+                stockHistory.innerHTML += `<div>Low: ${low}</div>`;
+                stockHistory.innerHTML += `<div>Close: ${close}</div>`;
+                stockHistory.innerHTML += `<div>Volume: ${volume}</div>`;
+                stockHistory.innerHTML += `<hr>`; // Add a horizontal line for better separation
+            }
+        }
+    });
+</script>
