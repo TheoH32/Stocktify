@@ -13,10 +13,6 @@ title: Stocktest
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('send-button').addEventListener('click', getStockData);
         
-        function removeSpecialCharsAtStart(str) {
-           return str.replace(/^[^a-zA-Z]+/, '');
-        }
-
         async function getStockData() {
             const userInput = document.getElementById('user-input').value.trim().toUpperCase();
             const stockHistory = document.getElementById('stock-history');
@@ -39,12 +35,8 @@ title: Stocktest
 
                 const data = await response.json();
 
-                if (data && data.name) {
-                    // Display stock data
-                    stockHistory.innerHTML += `<div>Bot: ${data.name} (${data.symbol}) is currently priced at $${data.price}.</div>`;
-                } else {
-                    stockHistory.innerHTML += `<div>Bot: Sorry, I couldn't find data for the symbol "${userInput}".</div>`;
-                }
+                // Display raw JSON data
+                stockHistory.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
 
             } catch (error) {
                 if (error.name === 'AbortError') {
