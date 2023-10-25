@@ -8,6 +8,14 @@ layout: post
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Login</title>
     <style>
+        .normal {
+            background-color: #121212 !important;
+            color: white !important;
+        }
+        .lightmode {
+            background-color: #F6FFF5 !important;
+            color: black !important;
+        }
         .post-title {
             text-align: center;
             font-size: 3em;
