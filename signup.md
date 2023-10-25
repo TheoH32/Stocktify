@@ -173,8 +173,16 @@ layout: post
         let fetchPassword = document.getElementById("password").value
 
         fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/person/post?email=${fetchEmail}&password=${fetchPassword}@123&name=${fetchName}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(response => {
+            if (!response.ok) {
+                const errorMsg = 'Login error: ' + response.status;
+                console.log(errorMsg);
+                return;
+            }
+            // Success!!!
+            // Redirect to Database location
+            console.log("success")
+            window.location.href = "/Stocktify/login";
+        });
     }
 </script>
