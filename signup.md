@@ -8,6 +8,14 @@ layout: post
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Sign Up</title>
     <style>
+        .normal {
+            background-color: #121212 !important;
+            color: white !important;
+        }
+        .lightmode {
+            background-color: #F6FFF5 !important;
+            color: black !important;
+        }
         .post-title {
             text-align: center;
             font-size: 3em;
@@ -173,8 +181,16 @@ layout: post
         let fetchPassword = document.getElementById("password").value
 
         fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/person/post?email=${fetchEmail}&password=${fetchPassword}@123&name=${fetchName}`, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(response => {
+            if (!response.ok) {
+                const errorMsg = 'Login error: ' + response.status;
+                console.log(errorMsg);
+                return;
+            }
+            // Success!!!
+            // Redirect to Database location
+            console.log("success")
+            window.location.href = "/Stocktify/login";
+        });
     }
 </script>
