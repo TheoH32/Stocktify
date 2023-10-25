@@ -127,28 +127,46 @@ search_exclude: true
         </div>
     </div>
 
-<div>
-    <section class="team1">
-      <main id="content" class="main-content" role="main">
-        <table id="recipe">
-          <thead>
-            <tr>
-            </tr>
-          </thead>
-          <tbody id="result">
-            <!-- generated rows -->
-          </tbody>
-        </table>
-      </main>
-    </section>
-  </div>
+  <br>
+
+<form id="stockDataForm">
+    <label for="symbolInput">Enter Stock Symbol:</label>
+    <input type="text" id="symbolInput" name="symbol" required>
+    <button type="submit">Search</button>
+</form>
+
+<br>
+
+<div id="result"></div>
 
 <script>
+  // USE FOR INPUTS
+    // document.getElementById("stockDataForm").addEventListener("submit", function (e) {
+    //     e.preventDefault();
+    //     const symbol = document.getElementById("symbolInput").value;
+    //     searchStockData(symbol);
+    // });
+
+    // function searchStockData(symbol) {
+    //     fetch(`http://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${symbol}`)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             // Handle the data or display it on the page
+    //             document.getElementById("result").textContent = data;
+    //         })
+    //         .catch(error => {
+    //             console.error("Error:", error);
+    //         });
+    // }
+</script>
+
+<script>
+  // PRINT TEST
     // prepare HTML result container for new output
     const resultContainer = document.getElementById("result");
 
     // prepare fetch options
-    const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata";
+    const url = "http://stocktify.stu.nighthawkcodingsociety.com/api/stockdata";
     const headers = {
       method: 'GET',
       mode: 'cors',
@@ -207,4 +225,4 @@ search_exclude: true
       }
       resultContainer.appendChild(tr);
     }
-<script>
+</script>
