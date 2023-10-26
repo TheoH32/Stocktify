@@ -119,7 +119,7 @@ search_exclude: true
                 <p>NASDAQ is a tech-focused U.S. stock exchange, home to giants like Apple and Amazon, known for its electronic trading innovations.</p>
             </div>
         </div>
-        <div href="/dowjones.md" class="box box3">
+        <div class="box box3">
             <div class="content">
                 <h1>DOW JONES</h1>
                 <p>Dow Jones is a renowned U.S. stock market index, featuring leading companies, and is often used as a benchmark for the broader economic landscape.</p>
