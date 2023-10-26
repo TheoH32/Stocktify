@@ -107,8 +107,9 @@
 
                 const data = await response.json();
 
-                // Display raw JSON data
-                stockHistory.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                // Parse and display only the "Last Refreshed" data
+                const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+                stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
 
             } catch (error) {
