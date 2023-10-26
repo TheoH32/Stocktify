@@ -118,12 +118,17 @@
                 stockHistory.innerHTML += `<div>Close: ${dailyData["4. close"]}</div>`;
                 stockHistory.innerHTML += `<div>Volume: ${dailyData["6. volume"]}</div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                stockHistory.innerHTML += `<div></div>`;
 
             } catch (error) {
                 if (error.name === 'AbortError') {
                     stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
                 } else {
                     stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
+                    stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                    stockHistory.innerHTML += `<div></div>`;
+                    stockHistory.innerHTML += `<div></div>`;
+
                 }
             } finally {
                 clearTimeout(timeoutId);
