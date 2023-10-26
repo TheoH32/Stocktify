@@ -81,7 +81,6 @@ search_exclude: false
     }
 </script>
 
-
 <div class="tabs-section">
     <div class="tabs">
         <button class="tab" onclick="showTab('tab1')">Tab 1</button>

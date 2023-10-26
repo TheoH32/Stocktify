@@ -41,7 +41,7 @@ title: Stocktest
                 stockHistory.innerHTML += `<div>Volume: ${dailyData["6. volume"]}</div>`;
 
             } catch (error) {
-                stockHistory.innerHTML += `<div>Error: ${error.message}</div>`;
+                stockHistory.innerHTML += `<div>Error: Please enter in a valid stock. If this issue keeps persisting, even with valid stocks, please contact administration</div>`;
             }
         }
     });
