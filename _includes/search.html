@@ -110,6 +110,11 @@
                 // Parse and display only the "Last Refreshed" data
                 const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
                 stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
+                stockHistory.innerHTML += `<div>Open: ${dailyData["1. open"]}</div>`;
+                stockHistory.innerHTML += `<div>High: ${dailyData["2. high"]}</div>`;
+                stockHistory.innerHTML += `<div>Low: ${dailyData["3. low"]}</div>`;
+                stockHistory.innerHTML += `<div>Close: ${dailyData["4. close"]}</div>`;
+                stockHistory.innerHTML += `<div>Volume: ${dailyData["6. volume"]}</div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
 
             } catch (error) {
