@@ -4,20 +4,11 @@
     <button id="test" onclick="popUpInteract()">?</button>
     <div id="popup">
         <div id="scrollbox">
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
-            <div id="results">GOOGL 1.34% &darr;</div>
+            <!-- Stock name and data will be appended here -->
         </div>
         <div id="searchbar">
-            <input type="text" placeholder="Search a stock by its abbreviation" id="searchresult" style="width: 240px"/>
+            <input type="text" placeholder="Search by abbreviation" id="searchresult" style="width: 193px"/>
+            <button id="searchbut">Search</button>
         </div>
     </div>
 <style>
@@ -67,6 +58,10 @@
         color: #000;
         bottom: 0;
         position: absolute;
+        width: 97%;
+    }
+    #stock-name {
+        font-weight: bold;
     }
 </style>
 </body>
@@ -82,4 +77,62 @@
             popup.setAttribute("hidden", "hidden");
          }
     }
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('searchbut').addEventListener('click', getStockData);
+        
+        async function getStockData() {
+            const userInput = document.getElementById('searchresult').value.trim().toUpperCase();
+            const stockHistory = document.getElementById('scrollbox');
+
+            // Clear previous data
+            // stockHistory.innerHTML = "";
+
+            // Display stock name in bold at the top
+            stockHistory.innerHTML += `<div id="stock-name">${userInput}</div>`;
+
+            const controller = new AbortController();
+            const signal = controller.signal;
+
+            // Set a timeout to abort the fetch request
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+
+            try {
+                const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
+                    method: 'GET',
+                    signal: signal,
+                    mode: 'cors' // Add this line to enable CORS
+                });
+
+                const data = await response.json();
+
+                // Parse and display the "Last Refreshed" data and stock details
+                const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+                const dailyData = data["Time Series (Daily)"][lastRefreshed];
+
+                stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
+                stockHistory.innerHTML += `<div>Open: ${dailyData["1. open"]}</div>`;
+                stockHistory.innerHTML += `<div>High: ${dailyData["2. high"]}</div>`;
+                stockHistory.innerHTML += `<div>Low: ${dailyData["3. low"]}</div>`;
+                stockHistory.innerHTML += `<div>Close: ${dailyData["4. close"]}</div>`;
+                stockHistory.innerHTML += `<div>Volume: ${dailyData["6. volume"]}</div>`;
+                stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                stockHistory.innerHTML += `<div></div>`;
+
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
+                } else {
+                    stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
+                    stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                    stockHistory.innerHTML += `<div></div>`;
+                    stockHistory.innerHTML += `<div></div>`;
+
+                }
+            } finally {
+                clearTimeout(timeoutId);
+            }
+        }
+    });
 </script>
