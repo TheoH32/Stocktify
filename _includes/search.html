@@ -123,7 +123,7 @@
                 if (error.name === 'AbortError') {
                     stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
                 } else {
-                    stockHistory.innerHTML += `<div>Error: ${error.message}</div>`;
+                    stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
                 }
             } finally {
                 clearTimeout(timeoutId);
