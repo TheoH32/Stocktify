@@ -107,8 +107,10 @@
 
                 const data = await response.json();
 
-                // Parse and display only the "Last Refreshed" data
+                // Parse and display the "Last Refreshed" data and stock details
                 const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+                const dailyData = data["Time Series (Daily)"][lastRefreshed];
+
                 stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
                 stockHistory.innerHTML += `<div>Open: ${dailyData["1. open"]}</div>`;
                 stockHistory.innerHTML += `<div>High: ${dailyData["2. high"]}</div>`;
