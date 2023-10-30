@@ -6,10 +6,6 @@ github_repo: "Stocktify"
 baseurl: "/Stocktify"
 remote_theme: jekyll/minima
 repository: TheoH32/Stocktify
-minima:
-  social_links:
-    - { platform: github, user_url: "https://github.com/TheoH32"}
-    - { platform: github, user_url: "https://github.com/kaiden-dough"}
 # remote_theme: pages-themes/dinky@v0.2.0
 # remote_theme: pages-themes/minimal@v0.2.0
 # remote_theme: pages-themes/hacker@v0.2.0
