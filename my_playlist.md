@@ -12,6 +12,23 @@ search_exclude: true
         background-color: #F6FFF5 !important;
         color: black !important;
     }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      font-size: 40px;
+    }
 </style>
 <body id="body" class="normal" onclick= "swapp()">
 <script>
@@ -28,4 +45,8 @@ search_exclude: true
         }
     }
 </script>
-playlist
+
+  <div class="box">+</div>
+  <div class="box">+</div>
+  <div class="box">+</div>
+  <!-- Add more boxes as needed -->
