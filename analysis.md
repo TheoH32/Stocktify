@@ -104,10 +104,10 @@ search_exclude: false
 
 
 <!-- Input fields for num1 and num2 -->
-<label for="num1">P/E Ratio: </label>
+<label for="num1">Volume</label>
 <input type="number" id="num1" name="num1">
 <br>
-<label for="num2">Earnings Growth Rate: </label>
+<label for="num2">Price</label>
 <input type="number" id="num2" name="num2">
 <br>
 <button onclick="executePrediction()">Predict</button>
@@ -147,12 +147,12 @@ search_exclude: false
 
         trainAndPredict(num1, num2) {
             const data = [
-                [28, -12],
-                [28, 21],
-                [98, 11],
-                [14, -33]
+                [5000000, 150], // volume, price
+                [4500000, 120],
+                [5000, 20],
+                [6000, 15]
             ];
-            const answers = [0.2, 0.7, 0.9, 0.1];
+            const answers = [0.9, 0.8, 0.3, 0.2];
 
             const network500 = new Network(500);
             network500.train(data, answers);
