@@ -81,7 +81,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData);
-        
+    
         async function getStockData() {
             const userInput = document.getElementById('searchresult').value.trim().toUpperCase();
             const stockHistory = document.getElementById('scrollbox');
@@ -112,7 +112,7 @@
                 const dailyData = data["Time Series (Daily)"][lastRefreshed];
                 const openData = dailyData["1. open"];
 
-                stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>: ${lastRefreshed} --> Open - ${dailyData["1. open"]}</div>`;
+                stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>: ${lastRefreshed} --> ${dailyData["1. open"]} <button onclick="redirect(${userInput})">More</button></div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
                 stockHistory.innerHTML += `<div></div>`;
 
@@ -131,4 +131,10 @@
             }
         }
     });
+</script>
+<script>
+    function redirect(userInput){
+        localStorage.setItem("stockName",userInput);
+        location.replace("https://theoh32.github.io/Stocktify/analysis");
+    }
 </script>
