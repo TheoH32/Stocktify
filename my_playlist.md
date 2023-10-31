@@ -16,6 +16,12 @@ search_exclude: true
     }
 </style>
 
+<div class="topnav">
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <input type="text" placeholder="Search..">
+</div>
+
   <div class="box">+</div>
   <div class="box">+</div>
   <div class="box">+</div>
