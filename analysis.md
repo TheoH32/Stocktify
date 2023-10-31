@@ -297,11 +297,7 @@ search_exclude: false
 </body>
 
 <script>
-    window.onload = getStockData();
-    document.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById('searchbut').addEventListener('click', getStockData);
-        
-        async function getStockData() {
+    async function getStockData() {
             const userInput = localStorage.getItem("stockName");
             const stockHistory = document.getElementById('scrollbox');
             console.log(userInput);
@@ -348,5 +344,8 @@ search_exclude: false
                 clearTimeout(timeoutId);
             }
         }
+    window.onload = getStockData();
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
 </script>
