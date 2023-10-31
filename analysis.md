@@ -297,7 +297,7 @@ search_exclude: false
 </body>
 
 <script>
-    window.onload = getStockData;
+    window.onload = getStockData();
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData);
         
