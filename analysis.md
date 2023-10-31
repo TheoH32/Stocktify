@@ -302,7 +302,7 @@ search_exclude: false
         document.getElementById('searchbut').addEventListener('click', getStockData);
         
         async function getStockData() {
-            const userInput = document.getElementById('searchresult').value.trim().toUpperCase();
+            const userInput = localStorage.getItem("stockName");
             const stockHistory = document.getElementById('scrollbox');
             console.log(userInput);
             // Clear previous data
