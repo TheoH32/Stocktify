@@ -90,7 +90,7 @@
             // stockHistory.innerHTML = "";
 
             // Display stock name in bold at the top
-            stockHistory.innerHTML += `<div id="stock-name">${userInput}</div>`;
+            stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>`;
 
             const controller = new AbortController();
             const signal = controller.signal;
@@ -110,13 +110,9 @@
                 // Parse and display the "Last Refreshed" data and stock details
                 const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
                 const dailyData = data["Time Series (Daily)"][lastRefreshed];
+                const openData = dailyData["1. open"];
 
-                stockHistory.innerHTML += `<div>Last Refreshed: ${lastRefreshed}</div>`;
-                stockHistory.innerHTML += `<div>Open: ${dailyData["1. open"]}</div>`;
-                stockHistory.innerHTML += `<div>High: ${dailyData["2. high"]}</div>`;
-                stockHistory.innerHTML += `<div>Low: ${dailyData["3. low"]}</div>`;
-                stockHistory.innerHTML += `<div>Close: ${dailyData["4. close"]}</div>`;
-                stockHistory.innerHTML += `<div>Volume: ${dailyData["6. volume"]}</div>`;
+                stockHistory.innerHTML += `${lastRefreshed} --> Open: ${dailyData["1. open"]}</div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
                 stockHistory.innerHTML += `<div></div>`;
 
