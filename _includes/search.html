@@ -5,8 +5,8 @@
     <div id="popup">
         <div id="scrollbox">
             <!-- Stock name and data will be appended here -->
-            <div class="results" id="1re"><b>poop</b>poo<button id="1rebut" class="butto">More</button></div>
-            <div class="results" id="2re"><b>poo</b>poo<button id="2rebut" class="butto"">More</button></div>
+            <div class="results" id="1re"><b>poop</b>poo<button id="1rebut" class="butto" onclick="redirect()">More</button></div>
+            <div class="results" id="2re"><b>poo</b>poo<button id="2rebut" class="butto" onclick="redirect()">More</button></div>
         </div>
         <div id="searchbar">
             <input type="text" placeholder="Search by abbreviation" id="searchresult" style="width: 193px"/>
@@ -115,7 +115,7 @@
                 const dailyData = data["Time Series (Daily)"][lastRefreshed];
                 const openData = dailyData["1. open"];
 
-                stockHistory.innerHTML += `<div class="results" id="${num}re"><b>${userInput}</b>: ${lastRefreshed} --> ${dailyData["1. open"]} <button id="${num}rebut" class="butto">More</button></div>`;
+                stockHistory.innerHTML += `<div class="results" id="${num}re"><b>${userInput}</b>: ${lastRefreshed} --> ${dailyData["1. open"]} <button id="${num}rebut" class="butto" onclick="redirect()">More</button></div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
                 stockHistory.innerHTML += `<div></div>`;
                 num++;
@@ -146,27 +146,29 @@
     var resultant;
     var theBefore;
     var theInput = "";
-    for (var i = 0; i <= buttonsCount; i += 1) {
-        buttons[i].onclick = function(e) {
-            buttonPress=this.id;
-            console.log(buttonPress)
-            theID = buttonPress.replace("rebut", "");
-            console.log(theID)
-            result = document.getElementById(theID+'re');
-            resultant = result.innerHTML;
-            console.log(resultant);
-            theBefore = resultant.replace("<b>","")
-            console.log(theBefore);
-            for (let i = 0; i < theBefore.length && theBefore[i] != "<"; i++) {
-                theInput += theBefore[i];
-            }
-            
-            console.log(theInput);
-            localStorage.setItem("stockName",theInput);
-            location.replace("https://theoh32.github.io/Stocktify/analysis");
-            //location.replace("http://localhost:4001/Stocktify/analysis");
+    function redirect(){
+        for (var i = 0; i <= buttonsCount; i += 1) {
+            buttons[i].onclick = function(e) {
+                buttonPress=this.id;
+                console.log(buttonPress)
+                theID = buttonPress.replace("rebut", "");
+                console.log(theID)
+                result = document.getElementById(theID+'re');
+                resultant = result.innerHTML;
+                console.log(resultant);
+                theBefore = resultant.replace("<b>","")
+                console.log(theBefore);
+                for (let i = 0; i < theBefore.length && theBefore[i] != "<"; i++) {
+                    theInput += theBefore[i];
+                }
+                
+                console.log(theInput);
+                localStorage.setItem("stockName",theInput);
+                //location.replace("https://theoh32.github.io/Stocktify/analysis");
+                location.replace("http://localhost:4001/Stocktify/analysis");
 
 
-        };
+            };
+        }
     }
 </script>
