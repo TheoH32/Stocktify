@@ -90,7 +90,7 @@
             // stockHistory.innerHTML = "";
 
             // Display stock name in bold at the top
-            stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>`;
+            <!-- stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>`; -->
 
             const controller = new AbortController();
             const signal = controller.signal;
@@ -112,7 +112,7 @@
                 const dailyData = data["Time Series (Daily)"][lastRefreshed];
                 const openData = dailyData["1. open"];
 
-                stockHistory.innerHTML += `${lastRefreshed} --> Open: ${dailyData["1. open"]}</div>`;
+                stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>: ${lastRefreshed} --> Open - ${dailyData["1. open"]}</div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
                 stockHistory.innerHTML += `<div></div>`;
 
