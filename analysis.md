@@ -87,18 +87,37 @@ search_exclude: false
         <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
         <button class="tab" onclick="showTab('tab3')">History</button>
     </div>
-    <div class="tab-content" id="tab1">
-        <h2>Tab 1 Content</h2>
-        <p>This is the content for Tab 1.</p>
-    </div>
-    <div class="tab-content" id="tab2">
-        <h2>Tab 2 Content</h2>
-        <p>This is the content for Tab 2.</p>
-    </div>
-    <div class="tab-content" id="tab3">
-        <h2>Tab 3 Content</h2>
-        <p>This is the content for Tab 3.</p>
-    </div>
+    <div class="tab-content" id="tab1"></div>
+    <div class="tab-content" id="tab2"></div>
+    <div class="tab-content" id="tab3"></div>
+</div>
+<!-- Tab 1: Display the most recent stock data -->
+<div class="tab-content" id="tab1">
+    <h2>Breakdown</h2>
+    <p id="stockData">Loading...</p>
+</div>
+
+<!-- Tab 2: Add a slider for volume and percentage -->
+<div class="tab-content" id="tab2">
+    <h2>Share Chart Calculator</h2>
+    <label for="volumeSlider">Volume:</label>
+    <input type="range" id="volumeSlider" name="volume" min="0" max="10000000" step="1000">
+    <span id="volumeValue">0</span>
+    <br>
+    <label for="percentageSlider">Percentage:</label>
+    <input type="range" id="percentageSlider" name="percentage" min="0" max="100" step="0.1">
+    <span id="percentageValue">0</span>
+    <br>
+    <button onclick="updateChart()">Update Chart</button>
+    <!-- Add your chart display code here -->
+</div>
+
+<!-- Tab 3: Display the JSON data in a table -->
+<div class="tab-content" id="tab3">
+    <h2>History</h2>
+    <table id="jsonTable">
+        <!-- Table headers and data will be populated by JavaScript -->
+    </table>
 </div>
 
 
@@ -348,4 +367,55 @@ search_exclude: false
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
+</script>
+<script>
+    // Update Tab 1 with stock data
+    function updateStockDataDisplay(data) {
+        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+        const dailyData = data["Time Series (Daily)"][lastRefreshed];
+        const volume = dailyData["6. volume"];
+        const price = dailyData["1. open"];
+        document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
+    }
+
+    // Update chart based on slider values
+    function updateChart() {
+        const volume = document.getElementById('volumeSlider').value;
+        const percentage = document.getElementById('percentageSlider').value;
+        document.getElementById('volumeValue').textContent = volume;
+        document.getElementById('percentageValue').textContent = percentage;
+        // Add code to update your chart based on these values
+    }
+
+    // Convert JSON data to table and display in Tab 3
+    function jsonToTable(data) {
+        const table = document.getElementById('jsonTable');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        const headerRow = document.createElement('tr');
+        Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = key;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+        Object.keys(data["Time Series (Daily)"]).forEach(date => {
+            const tr = document.createElement('tr');
+            Object.values(data["Time Series (Daily)"][date]).forEach(value => {
+                const td = document.createElement('td');
+                td.textContent = value;
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+    }
+
+    // Modify the existing getStockData function to call the above functions
+    async function getStockData() {
+        // ... Existing code ...
+        updateStockDataDisplay(data);
+        jsonToTable(data);
+    }
 </script>
