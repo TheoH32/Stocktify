@@ -88,45 +88,16 @@ search_exclude: false
         <button class="tab" onclick="showTab('tab3')">History</button>
     </div>
     <div class="tab-content" id="tab1">
-        <div class="tab-content" id="tab1">
-            <h2>Most Recent Stock Data</h2>
-            <p id="recentStockData">Fetching data...</p>
-        </div>
+        <h2>Tab 1 Content</h2>
+        <p>This is the content for Tab 1.</p>
     </div>
     <div class="tab-content" id="tab2">
-        <div class="tab-content" id="tab2">
-            <h2>Share Chart Calculator</h2>
-            <label for="volumeSlider">Volume:</label>
-            <input type="range" id="volumeSlider" name="volumeSlider" min="0" max="100000000" step="1000" oninput="updateVolumeValue(this.value)">
-            <span id="volumeValue">0</span>
-            <br>
-            <label for="percentageSlider">Percentage:</label>
-            <input type="range" id="percentageSlider" name="percentageSlider" min="0" max="100" step="0.1" oninput="updatePercentageValue(this.value)">
-            <span id="percentageValue">0</span>
-            <br>
-            <button onclick="calculateShareChart()">Calculate</button>
-            <p id="shareChartResult">Result will be displayed here...</p>
-        </div>
+        <h2>Tab 2 Content</h2>
+        <p>This is the content for Tab 2.</p>
     </div>
     <div class="tab-content" id="tab3">
-        <div class="tab-content" id="tab3">
-            <h2>Stock History</h2>
-            <table id="stockHistoryTable">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Open</th>
-                        <th>High</th>
-                        <th>Low</th>
-                        <th>Close</th>
-                        <th>Volume</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be populated here using JavaScript -->
-                </tbody>
-            </table>
-        </div>
+        <h2>Tab 3 Content</h2>
+        <p>This is the content for Tab 3.</p>
     </div>
 </div>
 
@@ -378,95 +349,3 @@ search_exclude: false
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
 </script>
-<script>
-    async function displayRecentStockData() {
-        const userInput = localStorage.getItem("stockName");
-        const tab1Content = document.getElementById('tab1');
-        
-        try {
-            const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`);
-            const data = await response.json();
-            const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
-            const dailyData = data["Time Series (Daily)"][lastRefreshed];
-            
-            tab1Content.innerHTML = `
-                <h2>${userInput} Stock Data on ${lastRefreshed}</h2>
-                <p>Open: ${dailyData["1. open"]}</p>
-                <p>High: ${dailyData["2. high"]}</p>
-                <p>Low: ${dailyData["3. low"]}</p>
-                <p>Close: ${dailyData["4. close"]}</p>
-                <p>Volume: ${dailyData["6. volume"]}</p>
-            `;
-        } catch (error) {
-            tab1Content.innerHTML = `<p>Error fetching data for ${userInput}</p>`;
-        }
-    }
-
-    function displayJsonInTable(jsonData) {
-        const tab3Content = document.getElementById('tab3');
-        const timeSeries = jsonData["Time Series (Daily)"];
-        
-        let tableHtml = `<h2>Stock History</h2>
-                         <table border="1">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Open</th>
-                                    <th>High</th>
-                                    <th>Low</th>
-                                    <th>Close</th>
-                                    <th>Volume</th>
-                                </tr>
-                            </thead>
-                            <tbody>`;
-
-        for (const date in timeSeries) {
-            tableHtml += `
-                <tr>
-                    <td>${date}</td>
-                    <td>${timeSeries[date]["1. open"]}</td>
-                    <td>${timeSeries[date]["2. high"]}</td>
-                    <td>${timeSeries[date]["3. low"]}</td>
-                    <td>${timeSeries[date]["4. close"]}</td>
-                    <td>${timeSeries[date]["6. volume"]}</td>
-                </tr>
-            `;
-        }
-
-        tableHtml += `</tbody></table>`;
-        tab3Content.innerHTML = tableHtml;
-    }
-
-    function updateVolumeValue(value) {
-        document.getElementById('volumeValue').textContent = value;
-    }
-
-    function updatePercentageValue(value) {
-        document.getElementById('percentageValue').textContent = value + '%';
-    }
-
-    function calculateShareChart() {
-        // Logic to calculate share chart based on slider values
-        // For now, just displaying the values
-        const volume = document.getElementById('volumeSlider').value;
-        const percentage = document.getElementById('percentageSlider').value;
-        document.getElementById('shareChartResult').textContent = `Volume: ${volume}, Percentage: ${percentage}%`;
-    }
-
-    function executePrediction() {
-        const num1 = parseInt(document.getElementById('num1').value, 10);
-        const num2 = parseInt(document.getElementById('num2').value, 10);
-
-        const app = new App();
-        const result = app.trainAndPredict(num1, num2);
-
-        document.getElementById('output').textContent = `Prediction Result: ${result}`;
-    }
-
-    // Assuming you have a function to fetch the stock data and populate the table
-    // This function will be called when the page loads
-    window.onload = function() {
-        displayRecentStockData();
-    }
-</script>
-</body>
