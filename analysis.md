@@ -2,7 +2,58 @@
 layout: post
 search_exclude: false
 ---
+<script>
+    // Update Tab 1 with stock data
+    function updateStockDataDisplay(data) {
+        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+        const dailyData = data["Time Series (Daily)"][lastRefreshed];
+        const volume = dailyData["6. volume"];
+        const price = dailyData["1. open"];
+        document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
+    }
 
+    // Update chart based on slider values
+    function updateChart() {
+        const volume = document.getElementById('volumeSlider').value;
+        const percentage = document.getElementById('percentageSlider').value;
+        document.getElementById('volumeValue').textContent = volume;
+        document.getElementById('percentageValue').textContent = percentage;
+        // Add code to update your chart based on these values
+    }
+
+    // Convert JSON data to table and display in Tab 3
+    function jsonToTable(data) {
+        const table = document.getElementById('jsonTable');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        const headerRow = document.createElement('tr');
+        Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = key;
+            headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+        Object.keys(data["Time Series (Daily)"]).forEach(date => {
+            const tr = document.createElement('tr');
+            Object.values(data["Time Series (Daily)"][date]).forEach(value => {
+                const td = document.createElement('td');
+                td.textContent = value;
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+    }
+
+    // Modify the existing getStockData function to call the above functions
+    async function getStockData() {
+        // ... Existing code ...
+        updateStockDataDisplay(data);
+        jsonToTable(data);
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
     .normal{
@@ -93,49 +144,6 @@ search_exclude: false
         event.currentTarget.className += " active";
     }
 </script>
-
-<div class="tabs-section">
-    <div class="tabs">
-        <button class="tab" onclick="showTab('tab1')">Breakdown</button>
-        <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
-        <button class="tab" onclick="showTab('tab3')">History</button>
-    </div>
-    <!-- Tab 1: Display the most recent stock data -->
-    <div class="tab-content" id="tab1">
-        <div id="stockData"></div>
-    </div>
-    <!-- Tab 2: Add a slider for volume and percentage -->
-    <div class="tab-content" id="tab2">
-        <h2>Share Chart Calculator</h2>
-        <canvas id="pieChart"></canvas>
-        <input type="range" id="volumeSlider" min="0" max="1000000000" step="1000000" onchange="updateChart()">
-    </div>
-    <!-- Tab 3: Display the JSON data in a table -->
-    <div class="tab-content" id="tab3">
-        <h2>History</h2>
-        <table id="jsonTable"></table>
-    </div>
-</div>
-
-
-
-<!-- Input fields for num1 and num2 -->
-<label for="num1">Volume</label>
-<input type="number" id="num1" name="num1">
-<br>
-<label for="num2">Price</label>
-<input type="number" id="num2" name="num2">
-<br>
-<button onclick="executePrediction()" id="predict">Predict</button>
-
-<!-- Output area to display the result -->
-<h3>Result:</h3>
-<p id="output"></p>
-
-<div style="background-color: #e0e0e0; width: 100%; height: 30px; position: relative;">
-    <div id="progressBar" style="background-color: #4CAF50; width: 0%; height: 100%;"></div>
-</div>
-
 <script>
     class App {
         constructor() {}
@@ -370,55 +378,44 @@ search_exclude: false
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
 </script>
-<script>
-    // Update Tab 1 with stock data
-    function updateStockDataDisplay(data) {
-        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
-        const dailyData = data["Time Series (Daily)"][lastRefreshed];
-        const volume = dailyData["6. volume"];
-        const price = dailyData["1. open"];
-        document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
-    }
+<div class="tabs-section">
+    <div class="tabs">
+        <button class="tab" onclick="showTab('tab1')">Breakdown</button>
+        <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
+        <button class="tab" onclick="showTab('tab3')">History</button>
+    </div>
+    <!-- Tab 1: Display the most recent stock data -->
+    <div class="tab-content" id="tab1">
+        <div id="stockData"></div>
+    </div>
+    <!-- Tab 2: Add a slider for volume and percentage -->
+    <div class="tab-content" id="tab2">
+        <h2>Share Chart Calculator</h2>
+        <canvas id="pieChart"></canvas>
+        <input type="range" id="volumeSlider" min="0" max="1000000000" step="1000000" onchange="updateChart()">
+    </div>
+    <!-- Tab 3: Display the JSON data in a table -->
+    <div class="tab-content" id="tab3">
+        <h2>History</h2>
+        <table id="jsonTable"></table>
+    </div>
+</div>
 
-    // Update chart based on slider values
-    function updateChart() {
-        const volume = document.getElementById('volumeSlider').value;
-        const percentage = document.getElementById('percentageSlider').value;
-        document.getElementById('volumeValue').textContent = volume;
-        document.getElementById('percentageValue').textContent = percentage;
-        // Add code to update your chart based on these values
-    }
 
-    // Convert JSON data to table and display in Tab 3
-    function jsonToTable(data) {
-        const table = document.getElementById('jsonTable');
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
-        const headerRow = document.createElement('tr');
-        Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
-            const th = document.createElement('th');
-            th.textContent = key;
-            headerRow.appendChild(th);
-        });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-        Object.keys(data["Time Series (Daily)"]).forEach(date => {
-            const tr = document.createElement('tr');
-            Object.values(data["Time Series (Daily)"][date]).forEach(value => {
-                const td = document.createElement('td');
-                td.textContent = value;
-                tr.appendChild(td);
-            });
-            tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
-    }
 
-    // Modify the existing getStockData function to call the above functions
-    async function getStockData() {
-        // ... Existing code ...
-        updateStockDataDisplay(data);
-        jsonToTable(data);
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Input fields for num1 and num2 -->
+<label for="num1">Volume</label>
+<input type="number" id="num1" name="num1">
+<br>
+<label for="num2">Price</label>
+<input type="number" id="num2" name="num2">
+<br>
+<button onclick="executePrediction()" id="predict">Predict</button>
+
+<!-- Output area to display the result -->
+<h3>Result:</h3>
+<p id="output"></p>
+
+<div style="background-color: #e0e0e0; width: 100%; height: 30px; position: relative;">
+    <div id="progressBar" style="background-color: #4CAF50; width: 0%; height: 100%;"></div>
+</div>
