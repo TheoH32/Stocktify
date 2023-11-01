@@ -108,22 +108,28 @@ search_exclude: true
     </script>
     <div class="box-container">
         <div class="box box1">
-            <div class="content">
-                <h1>S&P 500</h1>
-                <p>The S&P 500 is a prominent U.S. stock market index consisting of 500 leading publicly traded companies, often used as a key indicator of the overall health and performance of the U.S. economy.</p>
-            </div>
+            <a href="/Stocktify/s&p500">
+                <div class="content">
+                    <h1>S&P 500</h1>
+                    <p>The S&P 500 is a prominent U.S. stock market index consisting of 500 leading publicly traded companies, often used as a key indicator of the overall health and performance of the U.S. economy.</p>
+                </div>
+            </a>
         </div>
         <div class="box box2">
-            <div class="content">
-                <h1>NASDAQ</h1>
-                <p>NASDAQ is a tech-focused U.S. stock exchange, home to giants like Apple and Amazon, known for its electronic trading innovations.</p>
-            </div>
+            <a href="/Stocktify/nasdaq">
+                <div class="content">
+                    <h1>NASDAQ</h1>
+                    <p>NASDAQ is a tech-focused U.S. stock exchange, home to giants like Apple and Amazon, known for its electronic trading innovations.</p>
+                </div>
+            </a>
         </div>
         <div class="box box3">
-            <div class="content">
-                <h1>DOW JONES</h1>
-                <p>Dow Jones is a renowned U.S. stock market index, featuring leading companies, and is often used as a benchmark for the broader economic landscape.</p>
-            </div>
+            <a href="/Stocktify/dowjones">
+                <div class="content">
+                    <h1>DOW JONES</h1>
+                    <p>Dow Jones is a renowned U.S. stock market index, featuring leading companies, and is often used as a benchmark for the broader economic landscape.</p>
+                </div>
+            </a>
         </div>
     </div>
 
