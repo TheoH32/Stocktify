@@ -132,22 +132,22 @@ search_exclude: true
 <!-- Ate code -->
 
   <style>
-    #recipe td, #recipe th {
+    #stock td, #stock th {
       border: 1px solid #ddd;
       padding: 8px;
     }
-    #recipe tr:nth-child(even){
+    #stock tr:nth-child(even){
       background-color: #f2f2f2;
     }
-    #recipe tr:hover {
+    #stock tr:hover {
       background-color: #DDC89B;
       color: white;
     }
-    #recipe th {
+    #stock th {
       padding-top: 12px;
       padding-bottom: 12px;
       text-align: left;
-      background-color: #D3BFA9;
+      background-color: #808080;
       color: white;
     }
   </style>
@@ -167,7 +167,7 @@ search_exclude: true
   <div>
     <section class="team1">
       <main id="content" class="main-content" role="main">
-        <table id="recipe">
+        <table id="stock">
           <thead>
             <tr>
               <th style="width:10%">Symbol</th>
