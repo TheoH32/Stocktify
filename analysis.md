@@ -87,37 +87,32 @@ search_exclude: false
         <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
         <button class="tab" onclick="showTab('tab3')">History</button>
     </div>
-    <div class="tab-content" id="tab1"></div>
-    <div class="tab-content" id="tab2"></div>
-    <div class="tab-content" id="tab3"></div>
-</div>
-<!-- Tab 1: Display the most recent stock data -->
-<div class="tab-content" id="tab1">
-    <h2>Breakdown</h2>
-    <p id="stockData">Loading...</p>
-</div>
-
-<!-- Tab 2: Add a slider for volume and percentage -->
-<div class="tab-content" id="tab2">
-    <h2>Share Chart Calculator</h2>
-    <label for="volumeSlider">Volume:</label>
-    <input type="range" id="volumeSlider" name="volume" min="0" max="10000000" step="1000">
-    <span id="volumeValue">0</span>
-    <br>
-    <label for="percentageSlider">Percentage:</label>
-    <input type="range" id="percentageSlider" name="percentage" min="0" max="100" step="0.1">
-    <span id="percentageValue">0</span>
-    <br>
-    <button onclick="updateChart()">Update Chart</button>
-    <!-- Add your chart display code here -->
-</div>
-
-<!-- Tab 3: Display the JSON data in a table -->
-<div class="tab-content" id="tab3">
-    <h2>History</h2>
-    <table id="jsonTable">
-        <!-- Table headers and data will be populated by JavaScript -->
-    </table>
+    <!-- Tab 1: Display the most recent stock data -->
+    <div class="tab-content" id="tab1">
+        <h2>Breakdown</h2>
+        <p id="stockData">Loading...</p>
+    </div>
+    <!-- Tab 2: Add a slider for volume and percentage -->
+    <div class="tab-content" id="tab2">
+        <h2>Share Chart Calculator</h2>
+        <label for="volumeSlider">Volume:</label>
+        <input type="range" id="volumeSlider" name="volume" min="0" max="10000000" step="1000">
+        <span id="volumeValue">0</span>
+        <br>
+        <label for="percentageSlider">Percentage:</label>
+        <input type="range" id="percentageSlider" name="percentage" min="0" max="100" step="0.1">
+        <span id="percentageValue">0</span>
+        <br>
+        <button onclick="updateChart()">Update Chart</button>
+        <!-- Add your chart display code here -->
+    </div>
+    <!-- Tab 3: Display the JSON data in a table -->
+    <div class="tab-content" id="tab3">
+        <h2>History</h2>
+        <table id="jsonTable">
+            <!-- Table headers and data will be populated by JavaScript -->
+        </table>
+    </div>
 </div>
 
 
