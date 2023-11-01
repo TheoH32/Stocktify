@@ -139,10 +139,10 @@ search_exclude: true
     #recipe tr:nth-child(even){
       background-color: #f2f2f2;
     }
-    /* #recipe tr:hover {
+    #recipe tr:hover {
       background-color: #DDC89B;
       color: white;
-    } */
+    }
     #recipe th {
       padding-top: 12px;
       padding-bottom: 12px;
@@ -151,7 +151,6 @@ search_exclude: true
       color: white;
     }
   </style>
-</head>
 <body>
 
   <div>
@@ -333,5 +332,3 @@ search_exclude: true
       resultContainer.appendChild(tr);
     }
   </script>
-
-</html>
