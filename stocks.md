@@ -156,7 +156,7 @@ search_exclude: true
   <div>
     <section class="team1">
       <div class="search_bar">
-        <input id="search" type="text" placeholder="Search Recipe.." />
+        <input id="search" type="text" placeholder="Search Stock.." />
         <button onclick="searchStock()" id="enter" type="button">🔍</button>
       </div>
     </section>
