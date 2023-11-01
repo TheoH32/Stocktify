@@ -4,28 +4,33 @@ search_exclude: true
 ---
 
 <style>
-    .normal{
-        background-color: #121212 !important;
-        color: white !important:
+    /* Optional: CSS for styling the search bar */
+    .search-container {
+      text-align: center;
+      margin-top: 50px;
     }
-    .lightmode {
-        background-color: #F6FFF5 !important;
-        color: black !important;
+    .search-box {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 250px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
-</style>
-<body id="body" class="normal" onclick= "swapp()">
-<script>
-    swapp()
-    function swapp(){
-        ld =  localStorage.getItem("storageName");
-        if(ld%2==0){
-            document.getElementById('body').className = "normal";
-            console.log("helo");
-        }
-        else{
-            document.getElementById('body').className = "lightmode";
-            console.log("heldo");
-        }
+    .search-button {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
-</script>
-playlist
+    .search-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+
+<div class="search-container">
+  <input id="search" type="text" class="search-box" placeholder="Search...">
+  <button onclick="searchFunction()" class="search-button">Search</button>
+</div>

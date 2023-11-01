@@ -83,9 +83,9 @@ search_exclude: false
 
 <div class="tabs-section">
     <div class="tabs">
-        <button class="tab" onclick="showTab('tab1')">Tab 1</button>
-        <button class="tab" onclick="showTab('tab2')">Tab 2</button>
-        <button class="tab" onclick="showTab('tab3')">Tab 3</button>
+        <button class="tab" onclick="showTab('tab1')">Breakdown</button>
+        <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
+        <button class="tab" onclick="showTab('tab3')">History</button>
     </div>
     <div class="tab-content" id="tab1">
         <h2>Tab 1 Content</h2>
@@ -104,13 +104,13 @@ search_exclude: false
 
 
 <!-- Input fields for num1 and num2 -->
-<label for="num1">P/E Ratio: </label>
+<label for="num1">Volume</label>
 <input type="number" id="num1" name="num1">
 <br>
-<label for="num2">Earnings Growth Rate: </label>
+<label for="num2">Price</label>
 <input type="number" id="num2" name="num2">
 <br>
-<button onclick="executePrediction()">Predict</button>
+<button onclick="executePrediction()" id="predict">Predict</button>
 
 <!-- Output area to display the result -->
 <h3>Result:</h3>
@@ -147,12 +147,12 @@ search_exclude: false
 
         trainAndPredict(num1, num2) {
             const data = [
-                [28, -12],
-                [28, 21],
-                [98, 11],
-                [14, -33]
+                [5000000, 150], // volume, price
+                [4500000, 120],
+                [5000, 20],
+                [6000, 15]
             ];
-            const answers = [0.2, 0.7, 0.9, 0.1];
+            const answers = [0.9, 0.8, 0.3, 0.2];
 
             const network500 = new Network(500);
             network500.train(data, answers);
@@ -295,3 +295,57 @@ search_exclude: false
 </script>
 
 </body>
+
+<script>
+    async function getStockData() {
+            const userInput = localStorage.getItem("stockName");
+            const stockHistory = document.getElementById('scrollbox');
+            console.log(userInput);
+            // Clear previous data
+            // stockHistory.innerHTML = "";
+
+            // Display stock name in bold at the top
+            <!-- stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>`; -->
+
+            const controller = new AbortController();
+            const signal = controller.signal;
+
+            // Set a timeout to abort the fetch request
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+
+            try {
+                const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
+                    method: 'GET',
+                    signal: signal,
+                    mode: 'cors' // Add this line to enable CORS
+                });
+
+                const data = await response.json();
+
+                // Parse and display the "Last Refreshed" data and stock details
+                const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+                const dailyData = data["Time Series (Daily)"][lastRefreshed];
+                document.getElementById('num1').value = dailyData["6. volume"];
+                document.getElementById('num2').value = dailyData["1. open"];
+                document.getElementById("predict").click();
+
+
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
+                } else {
+                    stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
+                    stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                    stockHistory.innerHTML += `<div></div>`;
+                    stockHistory.innerHTML += `<div></div>`;
+
+                }
+            } finally {
+                clearTimeout(timeoutId);
+            }
+        }
+    window.onload = getStockData();
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('searchbut').addEventListener('click', getStockData); 
+    });
+</script>
