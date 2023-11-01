@@ -129,15 +129,209 @@ search_exclude: true
 
   <br>
 
-<form id="stockDataForm">
-    <label for="symbolInput">Enter Stock Symbol:</label>
-    <input type="text" id="symbolInput" name="symbol" required>
-    <button type="submit">Search</button>
-</form>
+<!-- Ate code -->
 
-<br>
+  <style>
+    #recipe td, #recipe th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    #recipe tr:nth-child(even){
+      background-color: #f2f2f2;
+    }
+    /* #recipe tr:hover {
+      background-color: #DDC89B;
+      color: white;
+    } */
+    #recipe th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #D3BFA9;
+      color: white;
+    }
+  </style>
+</head>
+<body>
 
-<div id="result"></div>
+  <div>
+    <section class="team1">
+      <div class="search_bar">
+        <input id="search" type="text" placeholder="Search Recipe.." />
+        <button onclick="searchStock()" id="enter" type="button">🔍</button>
+      </div>
+    </section>
+  </div>
 
-<script>
-</script>
+  <br>
+
+  <div>
+    <section class="team1">
+      <main id="content" class="main-content" role="main">
+        <table id="recipe">
+          <thead>
+            <tr>
+              <th style="width:10%">Symbol</th>
+              <th style="width:30%">Name</th>
+              <th style="width:10%">Exchange</th>
+            </tr>
+          </thead>
+          <tbody id="result">
+            <!-- generated rows -->
+          </tbody>
+        </table>
+      </main>
+    </section>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <script>
+    // prepare HTML result container for new output
+    const resultContainer = document.getElementById("result");
+
+    // prepare fetch options
+    const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stocksearch?symbol=TSLA";
+    const headers = {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    };
+
+    // fetch the API
+    fetch(url, headers)
+      // response is a RESTful "promise" on any successful fetch
+      .then(response => {
+        // check for response errors
+        if (response.status !== 200) {
+          const errorMsg = 'Database response error: ' + response.status;
+          console.log(errorMsg);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = errorMsg;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          return;
+        }
+        // fetch the data from API
+        response.json().then(data => {
+          console.log(data);
+          for (let row in data) {
+            console.log(data[row]);
+            add_row(data[row]);
+          }
+        }).catch(err => {
+          console.error(err);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = err;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+        });
+      }).catch(err => {
+        console.error(err);
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.innerHTML = err;
+        tr.appendChild(td);
+        resultContainer.appendChild(tr);
+      });
+
+    function add_row(rowData) {
+      const tr = document.createElement("tr");
+      for (let key in rowData) {
+        const td = document.createElement("td");
+        td.innerHTML = rowData[key];
+        tr.appendChild(td);
+      }
+      resultContainer.appendChild(tr);
+    }
+
+    function searchStock() {
+      // Get the search input value
+      const searchInput = document.getElementById("search").value;
+
+      // Prepare fetch options with the search query
+      const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stocksearch?symbol=" + encodeURIComponent(searchInput);
+      const headers = {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'default',
+        credentials: 'omit',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      };
+
+      // Clear the existing table rows
+      const resultContainer = document.getElementById("result");
+      resultContainer.innerHTML = "";
+
+      // Display loading message while fetching data
+      const loadingMessage = document.getElementById("loading");
+      loadingMessage.style.display = "block";
+      loadingMessage.textContent = "Loading...";
+
+      // Fetch the API with search query
+      fetch(url, headers)
+        .then(response => {
+          // Check for response errors
+          if (response.status !== 200) {
+            const errorMsg = 'Database response error: ' + response.status;
+            console.log(errorMsg);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = errorMsg;
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
+            loadingMessage.style.display = "none";
+            return;
+          }
+          // Fetch the data from API
+          response.json().then(data => {
+            console.log(data);
+            // Hide the loading message
+            loadingMessage.style.display = "none";
+            // Iterate through the data and add rows to the table
+            for (let row of data) {
+              addRowToTable(row);
+            }
+          }).catch(err => {
+            console.error(err);
+            const tr = document.createElement("tr");
+            const td = document.createElement("td");
+            td.innerHTML = err;
+            tr.appendChild(td);
+            resultContainer.appendChild(tr);
+            loadingMessage.style.display = "none";
+          });
+        }).catch(err => {
+          console.error(err);
+          const tr = document.createElement("tr");
+          const td = document.createElement("td");
+          td.innerHTML = err;
+          tr.appendChild(td);
+          resultContainer.appendChild(tr);
+          loadingMessage.style.display = "none";
+        });
+    }
+
+    function addRowToTable(rowData) {
+      const tr = document.createElement("tr");
+      for (let key in rowData) {
+        const td = document.createElement("td");
+        td.innerHTML = rowData[key];
+        tr.appendChild(td);
+      }
+      const resultContainer = document.getElementById("result");
+      resultContainer.appendChild(tr);
+    }
+  </script>
+
+</html>
