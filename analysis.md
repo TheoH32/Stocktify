@@ -44,6 +44,19 @@ search_exclude: false
     }
 
 </style>
+<style>
+        /* Add styles for the new elements as needed */
+        #jsonTable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #jsonTable th, #jsonTable td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+</style>
+
 <body id="body" class="normal" onclick= "swapp()">
 <script>
     swapp()
@@ -89,29 +102,18 @@ search_exclude: false
     </div>
     <!-- Tab 1: Display the most recent stock data -->
     <div class="tab-content" id="tab1">
-        <h2>Breakdown</h2>
-        <p id="stockData">Loading...</p>
+        <div id="stockData"></div>
     </div>
     <!-- Tab 2: Add a slider for volume and percentage -->
     <div class="tab-content" id="tab2">
         <h2>Share Chart Calculator</h2>
-        <label for="volumeSlider">Volume:</label>
-        <input type="range" id="volumeSlider" name="volume" min="0" max="10000000" step="1000">
-        <span id="volumeValue">0</span>
-        <br>
-        <label for="percentageSlider">Percentage:</label>
-        <input type="range" id="percentageSlider" name="percentage" min="0" max="100" step="0.1">
-        <span id="percentageValue">0</span>
-        <br>
-        <button onclick="updateChart()">Update Chart</button>
-        <!-- Add your chart display code here -->
+        <canvas id="pieChart"></canvas>
+        <input type="range" id="volumeSlider" min="0" max="1000000000" step="1000000" onchange="updateChart()">
     </div>
     <!-- Tab 3: Display the JSON data in a table -->
     <div class="tab-content" id="tab3">
         <h2>History</h2>
-        <table id="jsonTable">
-            <!-- Table headers and data will be populated by JavaScript -->
-        </table>
+        <table id="jsonTable"></table>
     </div>
 </div>
 
@@ -343,6 +345,11 @@ search_exclude: false
                 document.getElementById('num2').value = dailyData["1. open"];
                 document.getElementById("predict").click();
 
+                // Add data updates
+                displayHistory(data);
+                displayLatestStockInfo(data);
+                updateChart();
+
 
             } catch (error) {
                 if (error.name === 'AbortError') {
@@ -414,3 +421,4 @@ search_exclude: false
         jsonToTable(data);
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
