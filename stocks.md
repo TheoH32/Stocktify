@@ -191,17 +191,17 @@ search_exclude: true
     // prepare HTML result container for new output
     const resultContainer = document.getElementById("result");
 
-    // prepare fetch options
-    const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stocksearch?symbol=TSLA";
-    const headers = {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'default',
-      credentials: 'omit',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    };
+    // // prepare fetch options
+    // const url = "https://stocktify.stu.nighthawkcodingsociety.com/api/stocksearch?symbol=TSLA";
+    // const headers = {
+    //   method: 'GET',
+    //   mode: 'cors',
+    //   cache: 'default',
+    //   credentials: 'omit',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // };
 
     // fetch the API
     fetch(url, headers)
