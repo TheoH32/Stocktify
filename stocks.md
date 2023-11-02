@@ -135,8 +135,6 @@ search_exclude: true
 
   <br>
 
-<!-- Ate code -->
-
   <style>
     #stock td, #stock th {
       border: 1px solid #ddd;
