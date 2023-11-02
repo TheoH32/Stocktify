@@ -5,7 +5,7 @@
     <div id="popup">
         <div id="scrollbox">
             <!-- Stock name and data will be appended here -->
-            <div class="results" id="100re"><b>MSFT</b> 337.52 <button id="100rebut" class="butto" onclick="redirect()">More</button></div>
+            <div class="results" id="100re"><b>MSFT</b> 337.52 <button id="100rebut" class="butto" onclick="redirect()">More</button><button id="playAdd" class="butto" onclick="playlistAdd()">+</button></div>
             <div class="results" id="200re"><b>GOOGL</b> 123.61 <button id="200rebut" class="butto" onclick="redirect()">More</button></div>
         </div>
         <div id="searchbar">
@@ -64,6 +64,9 @@
     }
     #stock-name {
         font-weight: bold;
+    }
+    .butto {
+        margin: 5px;
     }
 </style>
 </body>
@@ -175,5 +178,36 @@
 
             };
         }
+    }
+
+    function playlistAdd() {
+        const url = 'http://your-api-url/setStats';
+            const data = {
+            id: '1',
+            attribute1: 'value1',
+            attribute2: 'value2'
+        };
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (response.status === 200) {
+                return response.json();
+                } else {
+                throw new Error('Request failed with status: ' + response.status);
+                }
+            })
+            .then(responseData => {
+                console.log('Response data:', responseData);
+                // You can handle the response data here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 </script>
