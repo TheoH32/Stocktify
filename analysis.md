@@ -374,6 +374,17 @@ search_exclude: false
     });
 
 </script>
+<div class="tabs-section">
+    <div class="tabs">
+        <button class="tab" onclick="showTab('tab1')">Breakdown</button>
+        <button class="tab" onclick="showTab('tab3')">History</button>
+    </div>
+    <!-- Tab 1: Display the most recent stock data -->
+    <div class="tab-content" id="tab1">
+    </div>
+</div>
+
+
 
 <!-- Input fields for num1 and num2 -->
 <label for="num1">Volume</label>
