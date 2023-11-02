@@ -353,7 +353,6 @@ search_exclude: false
 
             // Update Tab 3
             tabThree.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`; // Display JSON in a formatted manner
-            parseAndDisplayHistory(data);
 
         } catch (error) {
             if (error.name === 'AbortError') {
