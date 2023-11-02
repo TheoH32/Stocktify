@@ -392,7 +392,7 @@ search_exclude: false
         <script>
             async function getStockDataTab1() {
                     const userInput1 = localStorage.getItem("stockName");
-                    const stockHistory1 = document.getElementById('scrollbox');
+                    const stockHistory1 = document.getElementById('tab1');
                     // Clear previous data
                     // stockHistory.innerHTML = "";
                     // Display stock name in bold at the top
