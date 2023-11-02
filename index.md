@@ -42,3 +42,72 @@ Stocktify
 
 </script>
 
+<br>
+<br>
+
+<style>
+h2 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.box {
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+  border-radius: 25px;
+  text-align: center; /* Center-align content within the box */
+}
+
+.button {
+  background-color: #008000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+  display: block; /* Change display property to block */
+  margin: 0 auto; /* Set horizontal margins to auto */
+}
+</style>
+
+
+
+<h2>Imagine Spotify but for Stocks... 💥STOCKTIFY💥</h2>
+
+<h3>Your ultimate destination for all things stocks!</h3>
+
+<br>
+
+<div class="box">
+<p>Just as Spotify revolutionized the music industry by providing a seamless platform for music lovers, Stocktify is here to transform the way you engage with the world of stocks and investment. We bring you a curated experience, combining the power of technology with financial markets to offer a user-friendly, intuitive, and comprehensive platform that caters to both novice investors and seasoned traders alike.<p>
+
+<br>
+
+<p>At <b>Stocktify</b>, we understand the importance of accessible and insightful information in the realm of stock trading. Our platform is designed to simplify the complexities of the stock market, providing a space where you can explore, learn, and make informed investment decisions effortlessly.<p>
+
+<br>
+
+<p>Whether you're looking to dive into the stock market for the first time, seeking tools for in-depth analysis, or aiming to diversify your portfolio, Stocktify offers an array of features and resources to support your investment journey.<p>
+
+<br>
+
+<p>Join us as we harmonize the world of stocks with user-centric design, personalized recommendations, real-time data, and an interactive community. Discover a new way to experience the stock market with Stocktify – where investing meets innovation.</p>
+
+<br>
+<br>
+
+<div>
+<a href="/Stocktify/stocks" class="button">Start Exploring!</a>
