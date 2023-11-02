@@ -106,7 +106,7 @@ search_exclude: true
             }
         }
     </script>
-    <div class="box-container">
+    <!-- <div class="box-container">
         <div class="box box1">
             <a href="/Stocktify/s&p500">
                 <div class="content">
@@ -131,7 +131,7 @@ search_exclude: true
                 </div>
             </a>
         </div>
-    </div>
+    </div> -->
 
   <br>
 
