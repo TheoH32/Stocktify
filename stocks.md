@@ -202,7 +202,6 @@ search_exclude: true
             </tr>
           </thead>
           <tbody id="result">
-            <!-- generated rows -->
           </tbody>
         </table>
       </main>
