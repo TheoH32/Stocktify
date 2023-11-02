@@ -28,16 +28,28 @@ search_exclude: true
     .search-button:hover {
       background-color: #45a049;
     }
+    .groupOne {
+      border: 1px solid #ccc;
+    }
+    .groupTwo {
+      border: 1px solid #ccc;
+    }
+    .groupThree {
+      border: 1px solid #ccc;
+    }
   </style>
 
-<div class="search-container">
-  <input id="search" type="text" class="search-box" placeholder="Search...">
-  <button onclick="searchFunction()" class="search-button">Search</button>
+<div class="groupOne">
+  <h1 id="stockOne"></h1>
 </div>
 
-<h1 id="stockOne"></h1>
-<h1 id="stockTwo"></h1>
-<h1 id="stockThree"></h1>
+<div class="groupTwo">
+  <h1 id="stockTwo"></h1>
+</div>
+
+<div class="groupThree">
+  <h1 id="stockThree"></h1>
+</div>
 
 <script>
     // Check if the elements with IDs "stockOne," "stockTwo," and "stockThree" exist
