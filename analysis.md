@@ -47,11 +47,6 @@ search_exclude: false
     }
 
     // Modify the existing getStockData function to call the above functions
-    async function getStockData() {
-        // ... Existing code ...
-        updateStockDataDisplay(data);
-        jsonToTable(data);
-    }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -377,6 +372,8 @@ search_exclude: false
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
+    updateStockDataDisplay(getStockData());
+    jsonToTable(getStockData());
 </script>
 <div class="tabs-section">
     <div class="tabs">
