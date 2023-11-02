@@ -135,7 +135,7 @@ search_exclude: true
 
   <br>
 
-  <style>
+  <!-- <style>
     #stock td, #stock th {
       border: 1px solid #ddd;
       padding: 8px;
@@ -180,7 +180,6 @@ search_exclude: true
             </tr>
           </thead>
           <tbody id="result">
-            <!-- generated rows -->
           </tbody>
         </table>
       </main>
@@ -335,4 +334,4 @@ search_exclude: true
       const resultContainer = document.getElementById("result");
       resultContainer.appendChild(tr);
     }
-  </script>
+  </script> -->
