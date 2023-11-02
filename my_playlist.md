@@ -34,3 +34,27 @@ search_exclude: true
   <input id="search" type="text" class="search-box" placeholder="Search...">
   <button onclick="searchFunction()" class="search-button">Search</button>
 </div>
+
+<h1 id="stockOne"></h1>
+<h1 id="stockTwo"></h1>
+<h1 id="stockThree"></h1>
+
+<script>
+    // Check if the elements with IDs "stockOne," "stockTwo," and "stockThree" exist
+    const stockOne = document.getElementById("stockOne");
+    const stockTwo = document.getElementById("stockTwo");
+    const stockThree = document.getElementById("stockThree");
+
+    // Retrieve data from localStorage and set it to the elements if they exist
+    if (stockOne) {
+      stockOne.innerHTML = localStorage.getItem("stockOne");
+    }
+
+    if (stockTwo) {
+      stockTwo.innerHTML = localStorage.getItem("stockTwo");
+    }
+
+    if (stockThree) {
+      stockThree.innerHTML = localStorage.getItem("stockThree");
+    }
+</script>
