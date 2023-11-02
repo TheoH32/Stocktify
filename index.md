@@ -110,4 +110,4 @@ p {
 <br>
 
 <div>
-<a href="#" class="button">Start Exploring!</a>
+<a href="/Stocktify/stocks" class="button">Start Exploring!</a>

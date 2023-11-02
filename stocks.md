@@ -135,9 +135,7 @@ search_exclude: true
 
   <br>
 
-<!-- Ate code -->
-
-  <style>
+  <!-- <style>
     #stock td, #stock th {
       border: 1px solid #ddd;
       padding: 8px;
@@ -156,16 +154,38 @@ search_exclude: true
       background-color: #808080;
       color: white;
     }
+
+    .search-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .search-box {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 250px;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .search-button {
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .search-button:hover {
+      background-color: #45a049;
+    }
   </style>
 <body>
 
   <div>
-    <section class="team1">
-      <div class="search_bar">
-        <input id="search" type="text" placeholder="Search Stock.." />
-        <button onclick="searchStock()" id="enter" type="button">🔍</button>
-      </div>
-    </section>
+    <div class="search-container">
+  <input id="search" type="text" class="search-box" placeholder="Enter Stock...">
+  <button onclick="searchStock()" class="search-button">Search</button>
+</div>
   </div>
 
   <br>
@@ -337,4 +357,4 @@ search_exclude: true
       const resultContainer = document.getElementById("result");
       resultContainer.appendChild(tr);
     }
-  </script>
+  </script> -->
