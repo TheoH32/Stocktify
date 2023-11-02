@@ -12,55 +12,37 @@ search_exclude: false
         document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
     }
 
-    // Update chart based on slider values
-    function updateChart() {
-        const volume = document.getElementById('volumeSlider').value;
-        const percentage = document.getElementById('percentageSlider').value;
-        document.getElementById('volumeValue').textContent = volume;
-        document.getElementById('percentageValue').textContent = percentage;
-        // Add code to update your chart based on these values
-    }
-
-    // Convert JSON data to table and display in Tab 3
-    function jsonToTable(data) {
-        const table = document.getElementById('jsonTable');
-        
-        // Clear existing table content
-        table.innerHTML = '';
-
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
-        const headerRow = document.createElement('tr');
-        
-        // Check if the expected data structure exists
-        if (data["Time Series (Daily)"]) {
-            Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
-                const th = document.createElement('th');
-                th.textContent = key;
-                headerRow.appendChild(th);
-            });
-            thead.appendChild(headerRow);
-            table.appendChild(thead);
-            
-            Object.keys(data["Time Series (Daily)"]).forEach(date => {
-                const tr = document.createElement('tr');
-                Object.values(data["Time Series (Daily)"][date]).forEach(value => {
-                    const td = document.createElement('td');
-                    td.textContent = value;
-                    tr.appendChild(td);
-                });
-                tbody.appendChild(tr);
-            });
-            table.appendChild(tbody);
-        } else {
-            console.error("Data structure does not match expected format.");
-        }
-    }
-
 
     // Modify the existing getStockData function to call the above functions
 </script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function parseAndDisplayHistory(data) {
+        const timeSeries = data["Time Series (Daily)"];
+        const table = document.getElementById("jsonTable");
+
+        // Clear the table
+        table.innerHTML = "";
+
+        // Create table header
+        const thead = table.createTHead();
+        const row = thead.insertRow();
+        for (const key in timeSeries) {
+            const cell = row.insertCell();
+            cell.innerHTML = key;
+        }
+
+        // Create table rows
+        for (const key in timeSeries) {
+            const row = table.insertRow();
+            const dailyData = timeSeries[key];
+            for (const prop in dailyData) {
+                const cell = row.insertCell();
+                cell.innerHTML = dailyData[prop];
+            }
+        }
+    }
+</script>
 
 <style>
     .normal{
@@ -392,30 +374,6 @@ search_exclude: false
     });
 
 </script>
-<div class="tabs-section">
-    <div class="tabs">
-        <button class="tab" onclick="showTab('tab1')">Breakdown</button>
-        <button class="tab" onclick="showTab('tab2')">Share Chart Calculator</button>
-        <button class="tab" onclick="showTab('tab3')">History</button>
-    </div>
-    <!-- Tab 1: Display the most recent stock data -->
-    <div class="tab-content" id="tab1">
-    </div>
-    <!-- Tab 2: Add a slider for volume and percentage -->
-    <div class="tab-content" id="tab2">
-        <h2>Share Chart Calculator</h2>
-        <canvas id="pieChart"></canvas>
-        <input type="range" id="volumeSlider" min="0" max="1000000000" step="1000000" onchange="updateChart()">
-        
-    </div>
-    <!-- Tab 3: Display the JSON data in a table -->
-    <div class="tab-content" id="tab3">
-        <h2>History</h2>
-        <table id="jsonTable"></table>
-    </div>
-</div>
-
-
 
 <!-- Input fields for num1 and num2 -->
 <label for="num1">Volume</label>
