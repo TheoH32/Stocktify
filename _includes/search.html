@@ -118,7 +118,7 @@
                 const dailyData = data["Time Series (Daily)"][lastRefreshed];
                 const openData = dailyData["1. open"];
 
-                stockHistory.innerHTML += `<div class="results" id="${num}re"><b>${userInput}</b>: ${lastRefreshed} --> ${dailyData["1. open"]} <button id="${num}rebut" class="butto" onclick="redirect()">Predict</button><button id="playAdd" class="butto" onclick="saveStockLocal(${userInput})">+</button></div>`;
+                stockHistory.innerHTML += `<div class="results" id="${num}re"><b>${userInput}</b>: ${lastRefreshed} --> ${dailyData["1. open"]} <button id="${num}rebut" class="butto" onclick="redirect()">Predict</button><button id="playAdd" class="butto" onclick="saveStockLocal("${userInput}")">+</button></div>`;
                 stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
                 stockHistory.innerHTML += `<div></div>`;
                 num++;
