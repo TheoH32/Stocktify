@@ -359,9 +359,6 @@ search_exclude: false
                 document.getElementById('num1').value = dailyData["6. volume"];
                 document.getElementById('num2').value = dailyData["1. open"];
                 document.getElementById("predict").click();
-
-                // Add data updates
-                jsonToTable(data);
                 
 
 
@@ -392,7 +389,50 @@ search_exclude: false
     </div>
     <!-- Tab 1: Display the most recent stock data -->
     <div class="tab-content" id="tab1">
-        <div id="stockData"></div>
+        <script>
+            async function getStockDataTab1() {
+                    const userInput1 = localStorage.getItem("stockName");
+                    const stockHistory1 = document.getElementById('scrollbox');
+                    // Clear previous data
+                    // stockHistory.innerHTML = "";
+                    // Display stock name in bold at the top
+                    <!-- stockHistory1.innerHTML += `<div id="results"><b>${userInput}</b>`; -->
+                    const controller = new AbortController();
+                    const signal = controller.signal;
+                    // Set a timeout to abort the fetch request
+                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+                    try {
+                        const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput1}`, {
+                            method: 'GET',
+                            signal: signal,
+                            mode: 'cors' // Add this line to enable CORS
+                        });
+                        const data = await response.json();
+                        // Parse and display the "Last Refreshed" data and stock details
+                        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+                        const dailyData = data["Time Series (Daily)"][lastRefreshed];
+                        document.getElementById('num1').value = dailyData["6. volume"];
+                        document.getElementById('num2').value = dailyData["1. open"];
+                        document.getElementById("predict").click();
+                    } catch (error) {
+                        if (error.name === 'AbortError') {
+                            stockHistory1.innerHTML += `<div>Error: Request timed out</div>`;
+                        } else {
+                            stockHistory1.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
+                            stockHistory1.innerHTML += "<hr>"; // Add a horizontal line after the data
+                            stockHistory1.innerHTML += `<div></div>`;
+                            stockHistory1.innerHTML += `<div></div>`;
+                        }
+                    } finally {
+                        clearTimeout(timeoutId);
+                    }
+                }
+            window.onload = getStockDataTab1();
+            document.addEventListener('DOMContentLoaded', (event) => {
+                document.getElementById('searchbut').addEventListener('click', getStockDataTab1); 
+            });
+        </script>
+
     </div>
     <!-- Tab 2: Add a slider for volume and percentage -->
     <div class="tab-content" id="tab2">
