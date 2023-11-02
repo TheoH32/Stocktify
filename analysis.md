@@ -329,57 +329,68 @@ search_exclude: false
 
 <script>
     async function getStockData() {
-            const userInput = localStorage.getItem("stockName");
-            const stockHistory = document.getElementById('scrollbox');
-            console.log(userInput);
-            // Clear previous data
-            // stockHistory.innerHTML = "";
+        const userInput = localStorage.getItem("stockName");
+        const stockHistory = document.getElementById('scrollbox');
+        const tabOne = document.getElementById('tab1');
+        const tabTwo = document.getElementById('tab2');
+        const tabThree = document.getElementById('tab3');
 
-            // Display stock name in bold at the top
-            <!-- stockHistory.innerHTML += `<div id="results"><b>${userInput}</b>`; -->
+        const controller = new AbortController();
+        const signal = controller.signal;
 
-            const controller = new AbortController();
-            const signal = controller.signal;
+        // Set a timeout to abort the fetch request
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
-            // Set a timeout to abort the fetch request
-            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+        try {
+            const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
+                method: 'GET',
+                signal: signal,
+                mode: 'cors'
+            });
 
-            try {
-                const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
-                    method: 'GET',
-                    signal: signal,
-                    mode: 'cors' // Add this line to enable CORS
-                });
+            const data = await response.json();
 
-                const data = await response.json();
+            // Parse and display the "Last Refreshed" data and stock details
+            const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
+            const dailyData = data["Time Series (Daily)"][lastRefreshed];
+            const volume = dailyData["6. volume"];
+            const price = dailyData["1. open"];
 
-                // Parse and display the "Last Refreshed" data and stock details
-                const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
-                const dailyData = data["Time Series (Daily)"][lastRefreshed];
-                document.getElementById('num1').value = dailyData["6. volume"];
-                document.getElementById('num2').value = dailyData["1. open"];
-                document.getElementById("predict").click();
-                
+            document.getElementById('num1').value = volume;
+            document.getElementById('num2').value = price;
+            document.getElementById("predict").click();
 
+            // Update Tab 1
+            tabOne.innerHTML += `<br>Date: ${lastRefreshed}, Volume: ${volume}, Price: ${price}`;
 
-            } catch (error) {
-                if (error.name === 'AbortError') {
-                    stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
-                } else {
-                    stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
-                    stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
-                    stockHistory.innerHTML += `<div></div>`;
-                    stockHistory.innerHTML += `<div></div>`;
+            // Update Tab 2
+            tabTwo.innerHTML += `
+                <br>Volume: <input type="number" value="${volume}" readonly><br>
+                Price: <input type="number" value="${price}" readonly>
+            `;
 
-                }
-            } finally {
-                clearTimeout(timeoutId);
+            // Update Tab 3
+            tabThree.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`; // Display JSON in a formatted manner
+
+        } catch (error) {
+            if (error.name === 'AbortError') {
+                stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
+            } else {
+                stockHistory.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
+                stockHistory.innerHTML += "<hr>"; // Add a horizontal line after the data
+                stockHistory.innerHTML += `<div></div>`;
+                stockHistory.innerHTML += `<div></div>`;
             }
+        } finally {
+            clearTimeout(timeoutId);
         }
+    }
+
     window.onload = getStockData();
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
+
 </script>
 <div class="tabs-section">
     <div class="tabs">
@@ -389,51 +400,6 @@ search_exclude: false
     </div>
     <!-- Tab 1: Display the most recent stock data -->
     <div class="tab-content" id="tab1">
-        <script>
-            async function getStockDataTab1() {
-                    const userInput1 = localStorage.getItem("stockName");
-                    const stockHistory1 = document.getElementById('tab1');
-                    // Clear previous data
-                    // stockHistory.innerHTML = "";
-                    // Display stock name in bold at the top
-                    <!-- stockHistory1 += `<div id="results"><b>${userInput}</b>`; -->
-                    const controller = new AbortController();
-                    const signal = controller.signal;
-                    // Set a timeout to abort the fetch request
-                    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
-                    try {
-                        const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput1}`, {
-                            method: 'GET',
-                            signal: signal,
-                            mode: 'cors' // Add this line to enable CORS
-                        });
-                        const data = await response.json();
-                        // Parse and display the "Last Refreshed" data and stock details
-                        const lastRefreshed = data["Meta Data"]["3. Last Refreshed"];
-                        const dailyData = data["Time Series (Daily)"][lastRefreshed];
-                        document.getElementById('num1').value = dailyData["6. volume"];
-                        document.getElementById('num2').value = dailyData["1. open"];
-                        document.getElementById("predict").click();
-                    } catch (error) {
-                        if (error.name === 'AbortError') {
-                            stockHistory1 += `<div>Error: Request timed out</div>`;
-                        } else {
-                            stockHistory1 += `<div>Error: Please enter in a valid stock</div>`;
-                            stockHistory1 += "<hr>"; // Add a horizontal line after the data
-                            stockHistory1 += `<div></div>`;
-                            stockHistory1 += `<div></div>`;
-                            stockHistory1 += `<div>HELLO</div>`
-                        }
-                    } finally {
-                        clearTimeout(timeoutId);
-                    }
-                }
-            window.onload = getStockDataTab1();
-            document.addEventListener('DOMContentLoaded', (event) => {
-                document.getElementById('searchbut').addEventListener('click', getStockDataTab1); 
-            });
-        </script>
-
     </div>
     <!-- Tab 2: Add a slider for volume and percentage -->
     <div class="tab-content" id="tab2">
