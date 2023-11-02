@@ -396,7 +396,7 @@ search_exclude: false
                     // Clear previous data
                     // stockHistory.innerHTML = "";
                     // Display stock name in bold at the top
-                    <!-- stockHistory1.innerHTML += `<div id="results"><b>${userInput}</b>`; -->
+                    <!-- stockHistory1 += `<div id="results"><b>${userInput}</b>`; -->
                     const controller = new AbortController();
                     const signal = controller.signal;
                     // Set a timeout to abort the fetch request
@@ -416,12 +416,13 @@ search_exclude: false
                         document.getElementById("predict").click();
                     } catch (error) {
                         if (error.name === 'AbortError') {
-                            stockHistory1.innerHTML += `<div>Error: Request timed out</div>`;
+                            stockHistory1 += `<div>Error: Request timed out</div>`;
                         } else {
-                            stockHistory1.innerHTML += `<div>Error: Please enter in a valid stock</div>`;
-                            stockHistory1.innerHTML += "<hr>"; // Add a horizontal line after the data
-                            stockHistory1.innerHTML += `<div></div>`;
-                            stockHistory1.innerHTML += `<div></div>`;
+                            stockHistory1 += `<div>Error: Please enter in a valid stock</div>`;
+                            stockHistory1 += "<hr>"; // Add a horizontal line after the data
+                            stockHistory1 += `<div></div>`;
+                            stockHistory1 += `<div></div>`;
+                            stockHistory1 += `<div>HELLO</div>`
                         }
                     } finally {
                         clearTimeout(timeoutId);
