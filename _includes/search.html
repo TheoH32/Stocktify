@@ -212,6 +212,8 @@
     }
 
     function saveStockLocal(stockName) {
+        console.log(stockName);
+        console.log("saveStockLocal called")
         if (localStorage.getItem("stockOne") !== null) {
             if (localStorage.getItem("stockTwo") !== null) {
                 if (localStorage.getItem("stockThree") !== null) {
