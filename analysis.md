@@ -24,27 +24,39 @@ search_exclude: false
     // Convert JSON data to table and display in Tab 3
     function jsonToTable(data) {
         const table = document.getElementById('jsonTable');
+        
+        // Clear existing table content
+        table.innerHTML = '';
+
         const thead = document.createElement('thead');
         const tbody = document.createElement('tbody');
         const headerRow = document.createElement('tr');
-        Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
-            const th = document.createElement('th');
-            th.textContent = key;
-            headerRow.appendChild(th);
-        });
-        thead.appendChild(headerRow);
-        table.appendChild(thead);
-        Object.keys(data["Time Series (Daily)"]).forEach(date => {
-            const tr = document.createElement('tr');
-            Object.values(data["Time Series (Daily)"][date]).forEach(value => {
-                const td = document.createElement('td');
-                td.textContent = value;
-                tr.appendChild(td);
+        
+        // Check if the expected data structure exists
+        if (data["Time Series (Daily)"]) {
+            Object.keys(data["Time Series (Daily)"][Object.keys(data["Time Series (Daily)"])[0]]).forEach(key => {
+                const th = document.createElement('th');
+                th.textContent = key;
+                headerRow.appendChild(th);
             });
-            tbody.appendChild(tr);
-        });
-        table.appendChild(tbody);
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            
+            Object.keys(data["Time Series (Daily)"]).forEach(date => {
+                const tr = document.createElement('tr');
+                Object.values(data["Time Series (Daily)"][date]).forEach(value => {
+                    const td = document.createElement('td');
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+            table.appendChild(tbody);
+        } else {
+            console.error("Data structure does not match expected format.");
+        }
     }
+
 
     // Modify the existing getStockData function to call the above functions
 </script>
@@ -349,9 +361,8 @@ search_exclude: false
                 document.getElementById("predict").click();
 
                 // Add data updates
-                displayHistory(data);
-                displayLatestStockInfo(data);
-                updateChart();
+                jsonToTable(data);
+                
 
 
             } catch (error) {
@@ -372,8 +383,6 @@ search_exclude: false
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
-    updateStockDataDisplay(getStockData());
-    jsonToTable(getStockData());
 </script>
 <div class="tabs-section">
     <div class="tabs">
@@ -390,6 +399,7 @@ search_exclude: false
         <h2>Share Chart Calculator</h2>
         <canvas id="pieChart"></canvas>
         <input type="range" id="volumeSlider" min="0" max="1000000000" step="1000000" onchange="updateChart()">
+        
     </div>
     <!-- Tab 3: Display the JSON data in a table -->
     <div class="tab-content" id="tab3">
