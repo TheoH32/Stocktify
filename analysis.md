@@ -115,7 +115,6 @@ search_exclude: false
 <script>
     function showTab(tabId) { 
         var i, tabcontent, tabbuttons;
-
         // Get all elements with class="tab-content" and hide them
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
