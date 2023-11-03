@@ -301,18 +301,6 @@
 </body>
 </html>
 <script>
-    let popup = document.getElementById("popup");
-    popup.setAttribute("hidden", "hidden");
-    function popUpInteract() {
-        let ishidden = popup.getAttribute("hidden");
-        if (ishidden) {
-            popup.removeAttribute("hidden");
-         } else {
-            popup.setAttribute("hidden", "hidden");
-         }
-    }
-</script>
-<script>
     var num = 0;
     document.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('searchbut').addEventListener('click', getStockData);
