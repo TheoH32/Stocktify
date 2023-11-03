@@ -4,7 +4,7 @@ search_exclude: true
 ---
 
 <style>
-    /* Optional: CSS for styling the search bar */
+    /* Optional: CSS for styling the search bar*/
     .search-container {
       text-align: center;
       margin-top: 50px;
