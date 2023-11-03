@@ -20,8 +20,10 @@ search_exclude: false
     function parseAndDisplayHistory(data) {
         const timeSeries = data["Time Series (Daily)"];
         const table = document.getElementById("jsonTable");
+
         // Clear the table
         table.innerHTML = "";
+
         // Create table header
         const thead = table.createTHead();
         const row = thead.insertRow();
@@ -29,6 +31,7 @@ search_exclude: false
             const cell = row.insertCell();
             cell.innerHTML = key;
         }
+
         // Create table rows
         for (const key in timeSeries) {
             const row = table.insertRow();
@@ -80,10 +83,6 @@ search_exclude: false
         border-top: none;
     }
 
-    #stockTitle {
-        text-align: center;
-    }
-
 </style>
 <style>
         /* Add styles for the new elements as needed */
@@ -116,16 +115,19 @@ search_exclude: false
 <script>
     function showTab(tabId) { 
         var i, tabcontent, tabbuttons;
+
         // Get all elements with class="tab-content" and hide them
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
+
         // Get all elements with class="tab" and remove the class "active"
         tabbuttons = document.getElementsByClassName("tab");
         for (i = 0; i < tabbuttons.length; i++) {
             tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
         }
+
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(tabId).style.display = "block";
         event.currentTarget.className += " active";
@@ -134,14 +136,17 @@ search_exclude: false
 <script>
     class App {
         constructor() {}
+
         static main() {
             const app = new App();
             app.trainAndPredict(28, -12);
         }
+
         makeAPrediction(num1, num2) {
             const app = new App();
             return app.trainAndPredict(num1, num2);
         }
+
         strongerPrediction(input1, input2) {
             const network = new App();
             const list = [];
@@ -152,6 +157,7 @@ search_exclude: false
             const averageOfTop3 = top3.reduce((acc, val) => acc + val, 0) / top3.length;
             return averageOfTop3;
         }
+
         trainAndPredict(num1, num2) {
             const data = [
                 [5000000, 150], // volume, price
@@ -160,20 +166,25 @@ search_exclude: false
                 [6000, 15]
             ];
             const answers = [0.9, 0.8, 0.3, 0.2];
+
             const network500 = new Network(500);
             network500.train(data, answers);
+
             const network1000 = new Network(1000);
             network1000.train(data, answers);
+
             const prediction = network500.predict(num1, num2);
             return prediction;
         }
     }
+
     class Network {
         constructor(epochs, learnFactor = null) {
             this.epochs = epochs;
             this.learnFactor = learnFactor;
             this.neurons = Array(6).fill().map(() => new Neuron());
         }
+
         predict(input1, input2) {
             return this.neurons[5].compute(
                 this.neurons[4].compute(
@@ -186,13 +197,16 @@ search_exclude: false
                 )
             );
         }
+
         train(data, answers) {
             let bestEpochLoss = null;
             for (let epoch = 0; epoch < this.epochs; epoch++) {
                 const epochNeuron = this.neurons[epoch % 6];
                 epochNeuron.mutate(this.learnFactor);
+
                 const predictions = data.map(d => this.predict(d[0], d[1]));
                 const thisEpochLoss = Util.meanSquareLoss(answers, predictions);
+
                 if (bestEpochLoss === null) {
                     bestEpochLoss = thisEpochLoss;
                     epochNeuron.remember();
@@ -207,6 +221,7 @@ search_exclude: false
             }
         }
     }
+
     class Neuron {
         constructor() {
             this.random = Math.random;
@@ -217,6 +232,7 @@ search_exclude: false
             this.oldWeight2 = this.random() * 2 - 1;
             this.weight2 = this.random() * 2 - 1;
         }
+
         mutate(learnFactor) {
             const changeFactor = learnFactor ? learnFactor * (this.random() * 2 - 1) : this.random() * 2 - 1;
             const propertyToChange = Math.floor(this.random() * 3);
@@ -228,26 +244,31 @@ search_exclude: false
                 this.weight2 += changeFactor;
             }
         }
+
         forget() {
             this.bias = this.oldBias;
             this.weight1 = this.oldWeight1;
             this.weight2 = this.oldWeight2;
         }
+
         remember() {
             this.oldBias = this.bias;
             this.oldWeight1 = this.weight1;
             this.oldWeight2 = this.weight2;
         }
+
         compute(input1, input2) {
             const preActivation = (this.weight1 * input1) + (this.weight2 * input2) + this.bias;
             const output = Util.sigmoid(preActivation);
             return output;
         }
     }
+
     class Util {
         static sigmoid(inVal) {
             return 1 / (1 + Math.exp(-inVal));
         }
+
         static meanSquareLoss(correctAnswers, predictedAnswers) {
             const sumSquare = correctAnswers.reduce((acc, val, idx) => {
                 const error = val - predictedAnswers[idx];
@@ -256,16 +277,20 @@ search_exclude: false
             return sumSquare / correctAnswers.length;
         }
     }
+
     function executePrediction() {
         const num1 = parseInt(document.getElementById('num1').value, 10);
         const num2 = parseInt(document.getElementById('num2').value, 10);
+
         const app = new App();
         const result = app.trainAndPredict(num1, num2);
+
         document.getElementById('output').textContent = `Prediction Result: ${result}`;
     }
     function executePrediction() {
         const num1 = parseInt(document.getElementById('num1').value, 10);
         const num2 = parseInt(document.getElementById('num2').value, 10);
+
         const app = new App();
         const predictions = [];
         for (let i = 0; i < 10; i++) {
@@ -273,7 +298,9 @@ search_exclude: false
         }
         const top3 = predictions.sort((a, b) => b - a).slice(0, 3);
         const averageOfTop3 = top3.reduce((acc, val) => acc + val, 0) / top3.length;
+
         document.getElementById('output').textContent = `Prediction Result: ${averageOfTop3.toFixed(2)}`;
+
         // Update the progress bar
         const progressBar = document.getElementById('progressBar');
         progressBar.style.width = `${averageOfTop3 * 100}%`;
@@ -282,13 +309,13 @@ search_exclude: false
 
 </body>
 
-<!-- Add a title element -->
-<h1 id="stockTitle"></h1>
-
 <script>
     async function getStockData() {
         const userInput = localStorage.getItem("stockName");
-        const stockTitle = document.getElementById('stockTitle'); // Get the title element
+        const stockHistory = document.getElementById('scrollbox');
+        const tabOne = document.getElementById('tab1');
+        const tabTwo = document.getElementById('tab2');
+        const tabThree = document.getElementById('tab3');
 
         const controller = new AbortController();
         const signal = controller.signal;
@@ -296,13 +323,13 @@ search_exclude: false
         // Set a timeout to abort the fetch request
         const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
 
-
         try {
             const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
                 method: 'GET',
                 signal: signal,
                 mode: 'cors'
             });
+
             const data = await response.json();
 
             // Parse and display the "Last Refreshed" data and stock details
@@ -310,14 +337,23 @@ search_exclude: false
             const dailyData = data["Time Series (Daily)"][lastRefreshed];
             const volume = dailyData["6. volume"];
             const price = dailyData["1. open"];
+
             document.getElementById('num1').value = volume;
             document.getElementById('num2').value = price;
             document.getElementById("predict").click();
-            
-            // Set the title to the userInput
-            stockTitle.innerText = userInput;
 
-            // ... (remaining code)
+            // Update Tab 1
+            tabOne.innerHTML += `<br>Date: ${lastRefreshed}, Volume: ${volume}, Price: ${price}`;
+
+            // Update Tab 2
+            tabTwo.innerHTML += `
+                <br>Volume: <input type="number" value="${volume}" readonly><br>
+                Price: <input type="number" value="${price}" readonly>
+            `;
+
+            // Update Tab 3
+            tabThree.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`; // Display JSON in a formatted manner
+
         } catch (error) {
             if (error.name === 'AbortError') {
                 stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
@@ -334,7 +370,7 @@ search_exclude: false
 
     window.onload = getStockData();
     document.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById('searchbut').addEventListener('click', getStockData);
+        document.getElementById('searchbut').addEventListener('click', getStockData); 
     });
 
 </script>
