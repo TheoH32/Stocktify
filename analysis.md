@@ -285,8 +285,8 @@ search_exclude: false
 <script>
     async function getStockData() {
         const userInput = localStorage.getItem("stockName");
-        const stockTitle = document.getElementById('stockTitle');
-        stockTitle.innerHTML = userInput;
+        const stockTitleVAR = document.getElementById('stockTitle');
+        stockTitleVAR.innerHTML = userInput;
         const stockHistory = document.getElementById('scrollbox');
         const tabOne = document.getElementById('tab1');
         const tabTwo = document.getElementById('tab2');
