@@ -141,44 +141,31 @@
 </script>
 <script>
 
-    var buttons = document.getElementsByClassName("butto");
-    var buttonsCount = buttons.length;
-    var buttonPress;
-    var theID;
-    var result;
-    var resultant;
-    var theBefore;
-    var theInput = "";
-    function redirect(){
+    function redirect() {
         console.log("test");
-        buttons = document.getElementsByClassName("butto");
-        buttonsCount = buttons.length;
-        for (var i = 0; i <= buttonsCount; i += 1) {
+        var buttons = document.getElementsByClassName("butto");
+        for (var i = 0; i < buttons.length; i++) {
             console.log("test1");
             buttons[i].onclick = function(e) {
                 console.log("test2");
-                buttonPress=this.id;
-                console.log(buttonPress)
-                theID = buttonPress.replace("rebut", "");
-                console.log(theID)
-                result = document.getElementById(theID+'re');
-                resultant = result.innerHTML;
+                var buttonPress = this.id;
+                console.log(buttonPress);
+                var theID = buttonPress.replace("rebut", "");
+                console.log(theID);
+                var result = document.getElementById(theID + 're');
+                var resultant = result.innerHTML;
                 console.log(resultant);
-                theBefore = resultant.replace("<b>","")
+                var theBefore = resultant.replace("<b>", "");
                 console.log(theBefore);
-                for (let i = 0; i < theBefore.length && theBefore[i] != "<"; i++) {
-                    theInput += theBefore[i];
-                }
-                
+                var theInput = theBefore.split("<")[0];
                 console.log(theInput);
-                localStorage.setItem("stockName",theInput);
+                localStorage.setItem("stockName", theInput);
                 location.replace("https://theoh32.github.io/Stocktify/analysis");
                 //location.replace("http://localhost:4001/Stocktify/analysis");
-
-
             };
         }
     }
+
 
     function playlistAdd() {
         const url = 'http://your-api-url/setStats';
