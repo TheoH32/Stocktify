@@ -9,6 +9,7 @@ search_exclude: false
         const dailyData = data["Time Series (Daily)"][lastRefreshed];
         const volume = dailyData["6. volume"];
         const price = dailyData["1. open"];
+        document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
     }
 
 
@@ -114,6 +115,7 @@ search_exclude: false
 <script>
     function showTab(tabId) { 
         var i, tabcontent, tabbuttons;
+
         // Get all elements with class="tab-content" and hide them
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
