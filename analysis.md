@@ -9,7 +9,6 @@ search_exclude: false
         const dailyData = data["Time Series (Daily)"][lastRefreshed];
         const volume = dailyData["6. volume"];
         const price = dailyData["1. open"];
-        document.getElementById('stockData').textContent = \`Date: \${lastRefreshed}, Volume: \${volume}, Price: \${price}\ `;
     }
 
 
