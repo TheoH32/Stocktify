@@ -282,21 +282,15 @@ search_exclude: false
 
 </body>
 
+<!-- Add a title element -->
+<h1 id="stockTitle"></h1>
+
 <script>
     async function getStockData() {
         const userInput = localStorage.getItem("stockName");
-        const stockTitleVAR = document.getElementById('stockTitle');
-        stockTitleVAR.innerHTML = userInput;
-        const stockHistory = document.getElementById('scrollbox');
-        const tabOne = document.getElementById('tab1');
-        const tabTwo = document.getElementById('tab2');
-        const tabThree = document.getElementById('tab3');
+        const stockTitle = document.getElementById('stockTitle'); // Get the title element
 
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        // Set a timeout to abort the fetch request
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+        // ... (existing code)
 
         try {
             const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
@@ -314,15 +308,11 @@ search_exclude: false
             document.getElementById('num1').value = volume;
             document.getElementById('num2').value = price;
             document.getElementById("predict").click();
-            // Update Tab 1
-            tabOne.innerHTML += `<br>Date: ${lastRefreshed}, Volume: ${volume}, Price: ${price}`;
-            // Update Tab 2
-            tabTwo.innerHTML += `
-                <br>Volume: <input type="number" value="${volume}" readonly><br>
-                Price: <input type="number" value="${price}" readonly>
-            `;
-            // Update Tab 3
-            tabThree.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`; // Display JSON in a formatted manner
+            
+            // Set the title to the userInput
+            stockTitle.innerText = `Stock Analysis for: ${userInput}`;
+
+            // ... (remaining code)
         } catch (error) {
             if (error.name === 'AbortError') {
                 stockHistory.innerHTML += `<div>Error: Request timed out</div>`;
@@ -339,7 +329,7 @@ search_exclude: false
 
     window.onload = getStockData();
     document.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById('searchbut').addEventListener('click', getStockData); 
+        document.getElementById('searchbut').addEventListener('click', getStockData);
     });
 
 </script>
