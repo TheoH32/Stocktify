@@ -290,7 +290,12 @@ search_exclude: false
         const userInput = localStorage.getItem("stockName");
         const stockTitle = document.getElementById('stockTitle'); // Get the title element
 
-        // ... (existing code)
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        // Set a timeout to abort the fetch request
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 seconds
+
 
         try {
             const response = await fetch(`https://stocktify.stu.nighthawkcodingsociety.com/api/stockdata?symbol=${userInput}`, {
