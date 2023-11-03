@@ -310,7 +310,7 @@ search_exclude: false
             document.getElementById("predict").click();
             
             // Set the title to the userInput
-            stockTitle.innerText = `Stock Analysis for: ${userInput}`;
+            stockTitle.innerText = userInput;
 
             // ... (remaining code)
         } catch (error) {
@@ -335,7 +335,6 @@ search_exclude: false
 </script>
 
 <!-- Input fields for num1 and num2 -->
-<h1 id="stockTitle"></h1>
 <label for="num1">Volume</label>
 <input type="number" id="num1" name="num1">
 <br>

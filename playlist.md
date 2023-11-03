@@ -121,7 +121,7 @@ search_exclude: true
     var resultant;
     var theBefore;
     var theInput = "";
-    function redirect(){
+    function redirect() {
         console.log("test");
         buttons = document.getElementsByClassName("butto");
         buttonsCount = buttons.length;
