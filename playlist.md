@@ -28,16 +28,40 @@ search_exclude: true
     .search-button:hover {
       background-color: #45a049;
     }
+    .groupOne {
+      border: 1px solid #ccc;
+      margin: 10px;
+      text-align: center;
+    }
+    .groupTwo {
+      border: 1px solid #ccc;
+      margin: 10px;
+      text-align: center;
+    }
+    .groupThree {
+      border: 1px solid #ccc;
+      margin: 10px;
+      text-align: center;
+    }
   </style>
 
-<div class="search-container">
-  <input id="search" type="text" class="search-box" placeholder="Search...">
-  <button onclick="searchFunction()" class="search-button">Search</button>
+<div class="groupOne">
+  <h1 id="stockOne"></h1>
+  <button onclick="redirect()">Predict</button>
+  <button onclick="removeStock('stockOne')">Remove</button>
 </div>
 
-<h1 id="stockOne"></h1>
-<h1 id="stockTwo"></h1>
-<h1 id="stockThree"></h1>
+<div class="groupTwo">
+  <h1 id="stockTwo"></h1>
+  <button onclick="redirect()">Predict</button>
+  <button onclick="removeStock('stockTwo')">Remove</button>
+</div>
+
+<div class="groupThree">
+  <h1 id="stockThree"></h1>
+  <button onclick="redirect()">Predict</button>
+  <button onclick="removeStock('stockThree')">Remove</button>
+</div>
 
 <script>
     // Check if the elements with IDs "stockOne," "stockTwo," and "stockThree" exist
@@ -45,16 +69,79 @@ search_exclude: true
     const stockTwo = document.getElementById("stockTwo");
     const stockThree = document.getElementById("stockThree");
 
-    // Retrieve data from localStorage and set it to the elements if they exist
+    // Create an array to keep track of displayed stock symbols
+    const displayedStocks = [];
+
+    // Function to display stock data and update the displayedStocks array
+    function displayStock(stockElement, stockKey) {
+        const stockSymbol = localStorage.getItem(stockKey);
+        if (stockSymbol && !displayedStocks.includes(stockSymbol)) {
+            stockElement.innerHTML = stockSymbol;
+            displayedStocks.push(stockSymbol);
+        }
+    }
+
+    // Call the displayStock function for each element
     if (stockOne) {
-      stockOne.innerHTML = localStorage.getItem("stockOne");
+        displayStock(stockOne, "stockOne");
     }
 
     if (stockTwo) {
-      stockTwo.innerHTML = localStorage.getItem("stockTwo");
+        displayStock(stockTwo, "stockTwo");
     }
 
     if (stockThree) {
-      stockThree.innerHTML = localStorage.getItem("stockThree");
+        displayStock(stockThree, "stockThree");
     }
+
+    function removeStock(stockKey) {
+    const stockElement = document.getElementById(stockKey);
+    const stockSymbol = localStorage.getItem(stockKey);
+
+    if (stockSymbol && displayedStocks.includes(stockSymbol)) {
+      // Remove the stock symbol from the displayedStocks array
+      const index = displayedStocks.indexOf(stockSymbol);
+      if (index !== -1) {
+        displayedStocks.splice(index, 1);
+      }
+
+      // Clear the stock element's content
+      stockElement.innerHTML = '';
+
+      // Remove the stock symbol from localStorage
+      localStorage.removeItem(stockKey);
+    }
+  }
+
+function redirect() {
+    document.addEventListener('DOMContentLoaded', function() {
+        var buttons = document.getElementsByClassName("butto");
+        var buttonsCount = buttons.length;
+        var buttonPress;
+        var theID;
+        var result;
+        var resultant;
+        var theBefore;
+        var theInput = "";
+
+        for (var i = 0; i < buttonsCount; i++) {
+            buttons[i].addEventListener('click', function(e) {
+                buttonPress = this.id;
+                theID = buttonPress.replace("rebut", "");
+                result = document.getElementById(theID + 're');
+                resultant = result.innerHTML;
+                theBefore = resultant.replace("<b>", "");
+
+                for (let i = 0; i < theBefore.length && theBefore[i] != "<"; i++) {
+                    theInput += theBefore[i];
+                }
+
+                localStorage.setItem("stockName", theInput);
+                location.replace("https://theoh32.github.io/Stocktify/analysis");
+            });
+        }
+    });
+}
+
+
 </script>
