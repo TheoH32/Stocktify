@@ -148,7 +148,7 @@ h3 {
   text-align: center;
 }
 </style>
-
+<!-- 
 <h3>Top 50 stocks</h3>
 
 <body>
@@ -415,10 +415,10 @@ h3 {
 
 <script>
     $("#md_demo").DataTable();
-</script>
+</script> -->
 
 
-  <!-- <style>
+<style>
     #stock td, #stock th {
       border: 1px solid #ddd;
       padding: 8px;
@@ -617,4 +617,4 @@ h3 {
       const resultContainer = document.getElementById("result");
       resultContainer.appendChild(tr);
     }
-  </script> -->
+  </script>
