@@ -148,7 +148,7 @@ h3 {
   text-align: center;
 }
 </style>
-
+<!-- 
 <h3>Top 50 stocks</h3>
 
 <body>
@@ -415,7 +415,7 @@ h3 {
 
 <script>
     $("#md_demo").DataTable();
-</script>
+</script> -->
 
 
 <style>
